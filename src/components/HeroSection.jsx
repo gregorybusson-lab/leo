@@ -66,8 +66,8 @@ function HeroSection() {
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
-      {/* Gradient fade from black at top for smooth transition - très étendu */}
-      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black via-black/80 via-black/40 to-transparent"></div>
+      {/* Gradient fade from black at top - EXTRA LONG pour transition ultra douce */}
+      <div className="absolute top-0 left-0 right-0 h-screen bg-gradient-to-b from-black via-black/90 via-black/60 via-black/30 to-transparent"></div>
       
       {/* Gradient fade to black at bottom for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
@@ -181,14 +181,14 @@ function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <button
-        onClick={scrollToTeaser}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce
-                   cursor-pointer hover:scale-110 transition-transform duration-300
-                   focus:outline-none group"
-        aria-label="Défiler vers le teaser"
-      >
-        <div className="relative">
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <button
+          onClick={scrollToTeaser}
+          className="animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300
+                     focus:outline-none group"
+          aria-label="Défiler vers le teaser"
+        >
+          <div className="relative">
           {/* Glow effect on hover */}
           <div className="absolute inset-0 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 
                        transition-opacity duration-300 scale-150"></div>
@@ -207,6 +207,7 @@ function HeroSection() {
           </svg>
         </div>
       </button>
+      </div>
     </section>
   );
 }
