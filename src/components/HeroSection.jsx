@@ -87,18 +87,18 @@ function HeroSection() {
           <div className="relative inline-block">
             {/* Halo extra large - effet fumée blanche */}
             <div 
-              className="absolute -inset-64 bg-gradient-to-r from-white/12 via-white/18 to-white/12 
-                         rounded-[7rem] blur-[140px]"
+              className="absolute -inset-48 bg-gradient-to-r from-white/10 via-white/15 to-white/10 
+                         rounded-[6rem] blur-[120px]"
               style={{
                 animation: 'slowGlow 8s ease-in-out infinite',
-                opacity: Math.max(0, 0.85 - scrollY * 0.0015),
+                opacity: Math.max(0, 0.8 - scrollY * 0.0015),
               }}
             ></div>
             
             {/* Halo externe très large - pulse lent comme Spotify */}
             <div 
-              className="absolute -inset-48 bg-gradient-to-r from-emerald-500/18 via-white/15 to-teal-500/18 
-                         rounded-[5rem] blur-[120px]"
+              className="absolute -inset-36 bg-gradient-to-r from-emerald-500/15 via-white/12 to-teal-500/15 
+                         rounded-[4.5rem] blur-[100px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 1s',
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
@@ -107,8 +107,8 @@ function HeroSection() {
             
             {/* Halo moyen */}
             <div 
-              className="absolute -inset-32 bg-gradient-to-r from-emerald-500/22 via-white/20 to-teal-500/22 
-                         rounded-[4rem] blur-[100px]"
+              className="absolute -inset-24 bg-gradient-to-r from-emerald-500/20 via-white/18 to-teal-500/20 
+                         rounded-[3.5rem] blur-[85px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 2.3s',
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
@@ -117,7 +117,7 @@ function HeroSection() {
             
             {/* Halo proche - effet fumée */}
             <div 
-              className="absolute -inset-8 bg-white/28 blur-[50px] scale-110 animate-pulse"
+              className="absolute -inset-4 bg-white/25 blur-[40px] scale-110 animate-pulse"
               style={{
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
                 transition: 'opacity 0.2s ease-out',
@@ -154,7 +154,7 @@ function HeroSection() {
           }}
         >
           <p className="text-xl md:text-2xl lg:text-3xl font-light mb-8 text-gray-100 tracking-wide">
-            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — <span className="font-bold text-emerald-400">Sortie le 21 novembre 2025</span>
+            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — Sortie le 21 novembre 2025
           </p>
           
           {/* Bouton premium avec ambiance vert fumé */}
