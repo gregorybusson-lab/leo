@@ -5,6 +5,7 @@ import BioSection from './components/BioSection'
 import SocialSection from './components/SocialSection'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
+import ShareButton from './components/ShareButton'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <SocialSection />
       <Footer />
       <CookieConsent />
+      <ShareButton />
     </div>
   )
 }

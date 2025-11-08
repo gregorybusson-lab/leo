@@ -204,6 +204,52 @@ function HeroSection() {
             {/* Texte du bouton */}
             <span className="relative z-10 tracking-wide">Pré-écouter le premier single</span>
           </button>
+          
+          {/* Share button - subtle under CTA */}
+          <button
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: 'LÉO — Premier EP ORPHÉE',
+                  text: 'Découvrez l\'univers de LÉO, entre rap et électro. Premier single FEU disponible maintenant.',
+                  url: 'https://leobs.fr'
+                }).then(() => {
+                  if (window.gtag) {
+                    window.gtag('event', 'share', {
+                      method: 'Web Share API',
+                      content_type: 'landing_page',
+                      event_category: 'engagement'
+                    });
+                  }
+                }).catch((err) => {
+                  // User cancelled, do nothing
+                });
+              } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText('https://leobs.fr');
+                alert('Lien copié ! 🔗');
+                if (window.gtag) {
+                  window.gtag('event', 'share', {
+                    method: 'Clipboard',
+                    content_type: 'landing_page',
+                    event_category: 'engagement'
+                  });
+                }
+              }
+            }}
+            className="mt-4 text-gray-400 hover:text-emerald-400 transition-colors duration-300 
+                       text-sm flex items-center gap-2 mx-auto group"
+          >
+            <svg 
+              className="w-4 h-4 transition-transform group-hover:scale-110" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Partager ce site
+          </button>
         </div>
       </div>
 
