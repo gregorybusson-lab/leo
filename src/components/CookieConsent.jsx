@@ -15,11 +15,17 @@ function CookieConsent() {
   }, []);
 
   const initializeAnalytics = () => {
-    // Google Analytics (à configurer avec ton ID)
+    // Google Analytics
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX'); // Remplace par ton ID Google Analytics
+    gtag('config', 'G-3RR8Y6M8LN');
+    
+    // Charger le script GA
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3RR8Y6M8LN';
+    document.head.appendChild(script);
   };
 
   const acceptCookies = () => {
