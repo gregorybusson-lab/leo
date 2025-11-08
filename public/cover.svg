@@ -1,0 +1,10 @@
+<!-- Placeholder SVG pour la pochette de l'EP -->
+<svg width="1500" height="1500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1500" height="1500" fill="#1a1a1a"/>
+  <text x="50%" y="45%" font-family="Arial, sans-serif" font-size="120" fill="#666" text-anchor="middle" dominant-baseline="middle">
+    LÉO
+  </text>
+  <text x="50%" y="55%" font-family="Arial, sans-serif" font-size="48" fill="#444" text-anchor="middle" dominant-baseline="middle">
+    Premier EP
+  </text>
+</svg>
