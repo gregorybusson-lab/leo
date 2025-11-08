@@ -159,7 +159,7 @@ function ListenSection() {
           </div>
           
           <p className="relative text-center text-gray-300 text-base mt-6 mb-8 z-10">
-            EP disponible le 21 novembre 2025 — Suivez l'artiste dès maintenant
+            EP disponible le 21 novembre 2025 — Suivez-moi dès maintenant sur les réseaux sociaux et les plateformes
           </p>
         </div>
 
