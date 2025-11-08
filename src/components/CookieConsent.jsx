@@ -40,12 +40,30 @@ function CookieConsent() {
 
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'accepted');
+    
+    // Track cookie acceptance in dataLayer (before gtag is loaded)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'cookie_accept',
+      'event_category': 'consent',
+      'event_label': 'accepted'
+    });
+    
     setShowBanner(false);
     initializeAnalytics();
   };
 
   const refuseCookies = () => {
     localStorage.setItem('cookieConsent', 'refused');
+    
+    // Track cookie refusal in dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'cookie_refuse',
+      'event_category': 'consent',
+      'event_label': 'refused'
+    });
+    
     setShowBanner(false);
     // Aucun tracking ne sera chargé
   };

@@ -19,9 +19,33 @@ function TeaserSection() {
             // YT.PlayerState.PLAYING = 1
             if (event.data === 1) {
               setIsPlaying(true);
-            } else if (event.data === 2 || event.data === 0) {
-              // 2 = PAUSED, 0 = ENDED
+              // Track video play
+              if (window.gtag) {
+                window.gtag('event', 'video_play', {
+                  'event_category': 'video',
+                  'event_label': 'youtube_shorts_feu'
+                });
+              }
+            } else if (event.data === 2) {
+              // 2 = PAUSED
               setIsPlaying(false);
+              // Track video pause
+              if (window.gtag) {
+                window.gtag('event', 'video_pause', {
+                  'event_category': 'video',
+                  'event_label': 'youtube_shorts_feu'
+                });
+              }
+            } else if (event.data === 0) {
+              // 0 = ENDED
+              setIsPlaying(false);
+              // Track video ended
+              if (window.gtag) {
+                window.gtag('event', 'video_ended', {
+                  'event_category': 'video',
+                  'event_label': 'youtube_shorts_feu'
+                });
+              }
             }
           }
         }
@@ -104,6 +128,14 @@ function TeaserSection() {
             rel="noopener noreferrer"
             className="group social-icon-circle"
             aria-label="Instagram"
+            onClick={() => {
+              if (window.gtag) {
+                window.gtag('event', 'click_social_teaser', {
+                  'event_category': 'conversion',
+                  'event_label': 'instagram'
+                });
+              }
+            }}
           >
             <div className="social-icon-inner w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center 
                          transition-all duration-300 transform group-hover:scale-110 
@@ -124,6 +156,14 @@ function TeaserSection() {
             rel="noopener noreferrer"
             className="group social-icon-circle"
             aria-label="TikTok"
+            onClick={() => {
+              if (window.gtag) {
+                window.gtag('event', 'click_social_teaser', {
+                  'event_category': 'conversion',
+                  'event_label': 'tiktok'
+                });
+              }
+            }}
           >
             <div className="social-icon-inner w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center 
                          transition-all duration-300 transform group-hover:scale-110 
@@ -143,6 +183,14 @@ function TeaserSection() {
             rel="noopener noreferrer"
             className="group social-icon-circle"
             aria-label="YouTube"
+            onClick={() => {
+              if (window.gtag) {
+                window.gtag('event', 'click_social_teaser', {
+                  'event_category': 'conversion',
+                  'event_label': 'youtube'
+                });
+              }
+            }}
           >
             <div className="social-icon-inner w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center 
                          transition-all duration-300 transform group-hover:scale-110 
@@ -162,6 +210,14 @@ function TeaserSection() {
             rel="noopener noreferrer"
             className="group social-icon-circle"
             aria-label="Spotify"
+            onClick={() => {
+              if (window.gtag) {
+                window.gtag('event', 'click_social_teaser', {
+                  'event_category': 'conversion',
+                  'event_label': 'spotify'
+                });
+              }
+            }}
           >
             <div className="social-icon-inner w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center 
                          transition-all duration-300 transform group-hover:scale-110 

@@ -13,6 +13,14 @@ function HeroSection() {
   }, []);
 
   const scrollToTeaser = () => {
+    // Track scroll arrow click
+    if (window.gtag) {
+      window.gtag('event', 'click_scroll_arrow', {
+        'event_category': 'navigation',
+        'event_label': 'scroll_to_teaser'
+      });
+    }
+    
     const teaserSection = document.getElementById('teaser-section');
     if (teaserSection) {
       const targetPosition = teaserSection.offsetTop;
@@ -46,6 +54,14 @@ function HeroSection() {
   };
 
   const scrollToListen = () => {
+    // Track hero CTA click
+    if (window.gtag) {
+      window.gtag('event', 'click_cta_hero', {
+        'event_category': 'conversion',
+        'event_label': 'pre_ecoute_single'
+      });
+    }
+    
     document.getElementById('listen-section')?.scrollIntoView({ 
       behavior: 'smooth' 
     });

@@ -174,6 +174,15 @@ function ListenSection() {
               className={`px-6 py-3 ${platform.color} rounded-full font-medium 
                          transition-all duration-300 transform hover:scale-105 
                          shadow-lg hover:shadow-xl flex items-center gap-2`}
+              onClick={() => {
+                if (window.gtag) {
+                  window.gtag('event', 'click_platform_button', {
+                    'event_category': 'conversion',
+                    'event_label': platform.name.toLowerCase().replace(' ', '_'),
+                    'value': 1
+                  });
+                }
+              }}
             >
               {platform.icon}
               {platform.name}

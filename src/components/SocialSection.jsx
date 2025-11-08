@@ -55,6 +55,14 @@ function SocialSection() {
               rel="noopener noreferrer"
               className="group social-icon-circle"
               aria-label={social.name}
+              onClick={() => {
+                if (window.gtag) {
+                  window.gtag('event', 'click_social_footer', {
+                    'event_category': 'conversion',
+                    'event_label': social.name.toLowerCase()
+                  });
+                }
+              }}
             >
               <div className="social-icon-inner w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center 
                            transition-all duration-300 transform group-hover:scale-110 
