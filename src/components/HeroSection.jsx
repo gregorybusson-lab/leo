@@ -154,7 +154,7 @@ function HeroSection() {
           }}
         >
           <p className="text-xl md:text-2xl lg:text-3xl font-light mb-8 text-gray-100 tracking-wide">
-            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — Sortie le 21 novembre 2025
+            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — <span className="font-bold text-emerald-400">Sortie le 21 novembre 2025</span>
           </p>
           
           {/* Bouton premium avec ambiance vert fumé */}
