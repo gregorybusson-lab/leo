@@ -85,29 +85,39 @@ function HeroSection() {
           }}
         >
           <div className="relative inline-block">
+            {/* Halo extra large - effet fumée blanche */}
+            <div 
+              className="absolute -inset-48 bg-gradient-to-r from-white/10 via-white/15 to-white/10 
+                         rounded-[6rem] blur-[120px]"
+              style={{
+                animation: 'slowGlow 8s ease-in-out infinite',
+                opacity: Math.max(0, 0.8 - scrollY * 0.0015),
+              }}
+            ></div>
+            
             {/* Halo externe très large - pulse lent comme Spotify */}
             <div 
-              className="absolute -inset-32 bg-gradient-to-r from-emerald-500/15 via-white/10 to-teal-500/15 
-                         rounded-[4rem] blur-[100px]"
+              className="absolute -inset-36 bg-gradient-to-r from-emerald-500/15 via-white/12 to-teal-500/15 
+                         rounded-[4.5rem] blur-[100px]"
               style={{
-                animation: 'slowGlow 7s ease-in-out infinite',
+                animation: 'slowGlow 7s ease-in-out infinite 1s',
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
               }}
             ></div>
             
             {/* Halo moyen */}
             <div 
-              className="absolute -inset-20 bg-gradient-to-r from-emerald-500/20 via-white/15 to-teal-500/20 
-                         rounded-[3rem] blur-[80px]"
+              className="absolute -inset-24 bg-gradient-to-r from-emerald-500/20 via-white/18 to-teal-500/20 
+                         rounded-[3.5rem] blur-[85px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 2.3s',
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
               }}
             ></div>
             
-            {/* Halo proche - pulse plus rapide */}
+            {/* Halo proche - effet fumée */}
             <div 
-              className="absolute inset-0 bg-white/20 blur-3xl scale-110 animate-pulse"
+              className="absolute -inset-4 bg-white/25 blur-[40px] scale-110 animate-pulse"
               style={{
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
                 transition: 'opacity 0.2s ease-out',
