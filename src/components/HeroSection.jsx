@@ -85,56 +85,42 @@ function HeroSection() {
           }}
         >
           <div className="relative inline-block">
-            {/* Fumée blanche 1 - mouvement aléatoire lent */}
+            {/* Halo extra large - effet fumée blanche */}
             <div 
-              className="absolute -inset-64 bg-gradient-to-br from-white/20 via-transparent to-white/10 
-                         rounded-full blur-[150px] animate-smoke-drift-1"
+              className="absolute -inset-48 bg-gradient-to-r from-white/10 via-white/15 to-white/10 
+                         rounded-[6rem] blur-[120px]"
               style={{
-                opacity: Math.max(0, 0.6 - scrollY * 0.0015),
-              }}
-            ></div>
-            
-            {/* Fumée blanche 2 - mouvement opposé */}
-            <div 
-              className="absolute -inset-56 bg-gradient-to-tl from-white/15 via-white/25 to-transparent 
-                         rounded-full blur-[130px] animate-smoke-drift-2"
-              style={{
-                opacity: Math.max(0, 0.7 - scrollY * 0.0015),
-              }}
-            ></div>
-            
-            {/* Fumée verte 1 - pulse lent emerald */}
-            <div 
-              className="absolute -inset-48 bg-gradient-to-r from-emerald-500/20 via-white/20 to-teal-400/15 
-                         rounded-full blur-[110px] animate-smoke-drift-3"
-              style={{
+                animation: 'slowGlow 8s ease-in-out infinite',
                 opacity: Math.max(0, 0.8 - scrollY * 0.0015),
               }}
             ></div>
             
-            {/* Fumée blanche 3 - rotation lente */}
+            {/* Halo externe très large - pulse lent comme Spotify */}
             <div 
-              className="absolute -inset-40 bg-gradient-to-bl from-transparent via-white/30 to-emerald-400/10 
-                         rounded-full blur-[90px] animate-smoke-drift-4"
+              className="absolute -inset-36 bg-gradient-to-r from-emerald-500/15 via-white/12 to-teal-500/15 
+                         rounded-[4.5rem] blur-[100px]"
               style={{
-                opacity: Math.max(0, 0.85 - scrollY * 0.0015),
+                animation: 'slowGlow 7s ease-in-out infinite 1s',
+                opacity: Math.max(0, 1 - scrollY * 0.0015),
               }}
             ></div>
             
-            {/* Fumée verte 2 - proche et intense */}
+            {/* Halo moyen */}
             <div 
-              className="absolute -inset-24 bg-gradient-to-tr from-emerald-400/25 via-white/35 to-teal-400/20 
-                         rounded-full blur-[70px] animate-smoke-drift-5"
+              className="absolute -inset-24 bg-gradient-to-r from-emerald-500/20 via-white/18 to-teal-500/20 
+                         rounded-[3.5rem] blur-[85px]"
               style={{
-                opacity: Math.max(0, 0.9 - scrollY * 0.0015),
+                animation: 'slowGlow 7s ease-in-out infinite 2.3s',
+                opacity: Math.max(0, 1 - scrollY * 0.0015),
               }}
             ></div>
             
-            {/* Fumée blanche 4 - très proche, mouvement rapide */}
+            {/* Halo proche - effet fumée */}
             <div 
-              className="absolute -inset-8 bg-white/30 blur-[50px] animate-smoke-drift-6"
+              className="absolute -inset-4 bg-white/25 blur-[40px] scale-110 animate-pulse"
               style={{
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
+                transition: 'opacity 0.2s ease-out',
               }}
             ></div>
             
@@ -168,7 +154,7 @@ function HeroSection() {
           }}
         >
           <p className="text-xl md:text-2xl lg:text-3xl font-light mb-8 text-gray-100 tracking-wide">
-            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — <span className="font-bold text-emerald-400">Sortie le 21 novembre 2025</span>
+            <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — Sortie le 21 novembre 2025
           </p>
           
           {/* Bouton premium avec ambiance vert fumé */}
