@@ -66,20 +66,20 @@ function HeroSection() {
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
-      {/* Gradient fade from black at top for smooth transition */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent"></div>
+      {/* Gradient fade from black at top for smooth transition - plus grand */}
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/60 to-transparent"></div>
       
       {/* Gradient fade to black at bottom for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Album cover with parallax & wow effect */}
+        {/* Album cover with parallax & wow effect - optimisé pour mobile */}
         <div 
           className="mb-8 fade-in"
           style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-            transition: 'all 0.1s ease-out',
+            transform: `translate3d(0, ${scrollY * 0.3}px, 0)`,
+            willChange: 'transform',
             opacity: scrollY > 400 ? Math.max(0, 1 - (scrollY - 400) * 0.003) : 1,
           }}
         >
