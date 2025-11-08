@@ -5,9 +5,9 @@ function ShareButton() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling 50% of page
+      // Show button after scrolling 20% of page
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      setIsVisible(scrollPercent > 50);
+      setIsVisible(scrollPercent > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
