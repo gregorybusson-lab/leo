@@ -66,8 +66,8 @@ function HeroSection() {
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
-      {/* Gradient fade from black at top for smooth transition - plus grand */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/60 to-transparent"></div>
+      {/* Gradient fade from black at top for smooth transition - très étendu */}
+      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black via-black/80 via-black/40 to-transparent"></div>
       
       {/* Gradient fade to black at bottom for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
@@ -183,7 +183,7 @@ function HeroSection() {
       {/* Scroll indicator */}
       <button
         onClick={scrollToTeaser}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce
                    cursor-pointer hover:scale-110 transition-transform duration-300
                    focus:outline-none group"
         aria-label="Défiler vers le teaser"
