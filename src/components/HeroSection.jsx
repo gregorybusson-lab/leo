@@ -60,14 +60,11 @@ function HeroSection() {
         backgroundPosition: 'center',
       }}
     >
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark overlay for better text readability - mais pas en haut */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black/90"></div>
       
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
-      
-      {/* Gradient fade from black at top - EXTRA LONG pour transition ultra douce */}
-      <div className="absolute top-0 left-0 right-0 h-screen bg-gradient-to-b from-black via-black/90 via-black/60 via-black/30 to-transparent"></div>
       
       {/* Gradient fade to black at bottom for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
