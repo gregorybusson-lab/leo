@@ -66,6 +66,9 @@ function HeroSection() {
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
+      {/* Gradient fade from black at top for smooth transition */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent"></div>
+      
       {/* Gradient fade to black at bottom for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
       
