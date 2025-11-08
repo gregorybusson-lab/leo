@@ -6,7 +6,7 @@ function ListenSection() {
   const platforms = [
     { 
       name: 'Spotify', 
-      url: 'https://open.spotify.com/intl-fr/album/2JQCSgmIhQHcJQoqwu4afT', 
+      url: 'https://open.spotify.com/intl-fr/album/4ZTpS3Siiq0TY6WaRfhVO5', 
       color: 'bg-[#1DB954] hover:bg-[#1ed760]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@ function ListenSection() {
     },
     { 
       name: 'Apple Music', 
-      url: 'https://music.apple.com/fr/album/feu-single/1783866488', 
+      url: 'https://music.apple.com/fr/album/feu-single/1827224190?uo=4', 
       color: 'bg-[#FA243C] hover:bg-[#ff4458]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 814 1000">
@@ -79,7 +79,7 @@ function ListenSection() {
     },
     { 
       name: 'Amazon Music', 
-      url: 'https://www.amazon.fr/music/player/albums/B0FHWP1N9X', 
+      url: 'https://www.amazon.de/dp/B0FHWPFBLS', 
       color: 'bg-[#1A98FF] hover:bg-[#0d89ff]',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
