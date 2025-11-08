@@ -47,7 +47,7 @@ function ListenSection() {
     },
     { 
       name: 'YouTube Music', 
-      url: 'https://music.youtube.com/watch?v=TrsoE1A0WNA', 
+      url: 'https://music.youtube.com/watch?v=9ez2ksLZT34', 
       color: 'bg-[#FF0000] hover:bg-[#ff1a1a]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
