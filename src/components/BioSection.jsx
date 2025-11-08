@@ -60,7 +60,7 @@ function BioSection() {
               Entre machines, mélodies vaporeuses et textes à vif, il construit un univers où l'introspection se mêle à la pulsation.
             </p>
             <p>
-              Son premier EP, <span className="font-script text-emerald-400">Orphée</span>, traduit ce tiraillement entre lumière et ombre — la traversée d'un jeune artiste qui cherche à comprendre avant de vouloir convaincre.
+              Son premier EP, <span className="font-script font-bold text-emerald-400">ORPHÉE</span>, traduit ce tiraillement entre lumière et ombre — la traversée d'un jeune artiste qui cherche à comprendre avant de vouloir convaincre.
             </p>
           </div>
         </div>
