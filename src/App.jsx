@@ -4,6 +4,7 @@ import ListenSection from './components/ListenSection'
 import BioSection from './components/BioSection'
 import SocialSection from './components/SocialSection'
 import Footer from './components/Footer'
+import CookieConsent from './components/CookieConsent'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BioSection />
       <SocialSection />
       <Footer />
+      <CookieConsent />
     </div>
   )
 }
