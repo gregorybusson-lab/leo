@@ -87,17 +87,17 @@ function HeroSection() {
           <div className="relative inline-block">
             {/* Halo extra large - effet fumée blanche */}
             <div 
-              className="absolute -inset-48 bg-gradient-to-r from-white/10 via-white/15 to-white/10 
+              className="absolute -inset-48 bg-gradient-to-r from-white/18 via-white/25 to-white/18 
                          rounded-[6rem] blur-[120px]"
               style={{
                 animation: 'slowGlow 8s ease-in-out infinite',
-                opacity: Math.max(0, 0.8 - scrollY * 0.0015),
+                opacity: Math.max(0, 0.9 - scrollY * 0.0015),
               }}
             ></div>
             
             {/* Halo externe très large - pulse lent comme Spotify */}
             <div 
-              className="absolute -inset-36 bg-gradient-to-r from-emerald-500/15 via-white/12 to-teal-500/15 
+              className="absolute -inset-36 bg-gradient-to-r from-emerald-500/25 via-white/20 to-teal-500/25 
                          rounded-[4.5rem] blur-[100px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 1s',
@@ -107,7 +107,7 @@ function HeroSection() {
             
             {/* Halo moyen */}
             <div 
-              className="absolute -inset-24 bg-gradient-to-r from-emerald-500/20 via-white/18 to-teal-500/20 
+              className="absolute -inset-24 bg-gradient-to-r from-emerald-500/30 via-white/28 to-teal-500/30 
                          rounded-[3.5rem] blur-[85px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 2.3s',
@@ -117,7 +117,7 @@ function HeroSection() {
             
             {/* Halo proche - effet fumée */}
             <div 
-              className="absolute -inset-4 bg-white/25 blur-[40px] scale-110 animate-pulse"
+              className="absolute -inset-4 bg-white/40 blur-[40px] scale-110 animate-pulse"
               style={{
                 opacity: Math.max(0, 1 - scrollY * 0.0015),
                 transition: 'opacity 0.2s ease-out',
