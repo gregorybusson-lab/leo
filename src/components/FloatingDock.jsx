@@ -7,12 +7,17 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show dock after leaving hero section (20% scroll)
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      setIsVisible(scrollPercent > 20);
+      // Show dock after "Plongez dans l'univers" title is visible
+      const teaserSection = document.getElementById('teaser-section');
+      if (teaserSection) {
+        const rect = teaserSection.getBoundingClientRect();
+        // Show dock when teaser section title comes into view (within viewport)
+        setIsVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -121,15 +126,11 @@ function FloatingDock() {
     },
   ];
 
-  if (!isVisible) return null;
-
   return (
     <>
       {/* iOS-style Dock */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)] px-2"
-           style={{
-             animation: 'dockSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
-           }}>
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)] px-2 
+                       ${isVisible ? 'dock-appear' : 'dock-disappear'}`}>
         {/* Glassmorphism container */}
         <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
                         border border-white/20 flex items-center gap-2 sm:gap-3 sm:px-4">
@@ -309,6 +310,44 @@ function FloatingDock() {
             transform: translateX(-50%) translateY(0) scale(1);
             opacity: 1;
           }
+        }
+        
+        @keyframes dockDisappear {
+          0% {
+            transform: translateX(-50%) translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0px);
+          }
+          50% {
+            transform: translateX(-50%) translateY(-20px) scale(0.9);
+            opacity: 0.5;
+            filter: blur(2px);
+          }
+          100% {
+            transform: translateX(-50%) translateY(-40px) scale(0.5);
+            opacity: 0;
+            filter: blur(8px);
+          }
+        }
+        
+        @keyframes dustParticle {
+          0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(var(--tx), var(--ty)) scale(0);
+            opacity: 0;
+          }
+        }
+        
+        .dock-appear {
+          animation: dockSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        .dock-disappear {
+          animation: dockDisappear 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          pointer-events: none;
         }
         
         @keyframes dockBounce {
