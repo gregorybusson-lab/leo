@@ -12,15 +12,18 @@ function FloatingDock() {
       if (teaserSection) {
         const rect = teaserSection.getBoundingClientRect();
         
-        // Show dock when teaser title has scrolled up and is visible in viewport
-        // This means: teaser section top is above middle of screen AND it's still partially visible
-        const teaserIsInView = rect.top < window.innerHeight * 0.5 && rect.bottom > 0;
+        // Show dock when we scroll past the middle of teaser section
+        // Once visible, stay visible UNLESS we scroll back up to the very top (teaser not reached yet)
+        const hasReachedTeaser = rect.top < window.innerHeight * 0.5;
         
-        setIsVisible(teaserIsInView);
-        
-        // Track if dock has ever been visible (to enable disappear animation)
-        if (teaserIsInView && !hasBeenVisible) {
-          setHasBeenVisible(true);
+        if (hasReachedTeaser) {
+          setIsVisible(true);
+          if (!hasBeenVisible) {
+            setHasBeenVisible(true);
+          }
+        } else if (hasBeenVisible) {
+          // Only hide if we scrolled back up before the teaser section
+          setIsVisible(false);
         }
       }
     };
@@ -250,26 +253,87 @@ function FloatingDock() {
           </button>
         </div>
         
-        {/* Particle effects for disappear animation */}
+        {/* EXPLOSION DE PARTICULES - Effet spectaculaire */}
         {!isVisible && hasBeenVisible && (
           <>
-            {[...Array(12)].map((_, i) => {
-              const angle = (i / 12) * Math.PI * 2;
-              const distance = 60 + Math.random() * 40;
+            {/* Grosses particules principales - explosion radiale */}
+            {[...Array(24)].map((_, i) => {
+              const angle = (i / 24) * Math.PI * 2;
+              const distance = 80 + Math.random() * 60;
               const tx = Math.cos(angle) * distance;
-              const ty = Math.sin(angle) * distance - 30;
-              const delay = i * 0.03;
+              const ty = Math.sin(angle) * distance - 40;
+              const delay = i * 0.02;
+              const size = 3 + Math.random() * 4;
+              const colors = [
+                'from-emerald-400 to-teal-400',
+                'from-emerald-300 to-emerald-500',
+                'from-teal-300 to-teal-500',
+                'from-white to-emerald-300',
+              ];
+              const color = colors[Math.floor(Math.random() * colors.length)];
               
               return (
                 <div
-                  key={i}
-                  className="absolute w-2 h-2 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full"
+                  key={`main-${i}`}
+                  className={`absolute bg-gradient-to-br ${color} rounded-full blur-[1px]`}
+                  style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    top: '50%',
+                    left: '50%',
+                    animation: `particleExplosion 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s forwards`,
+                    '--tx': `${tx}px`,
+                    '--ty': `${ty}px`,
+                  }}
+                />
+              );
+            })}
+            
+            {/* Petites particules de fumée */}
+            {[...Array(30)].map((_, i) => {
+              const angle = Math.random() * Math.PI * 2;
+              const distance = 40 + Math.random() * 80;
+              const tx = Math.cos(angle) * distance;
+              const ty = Math.sin(angle) * distance - Math.random() * 60;
+              const delay = Math.random() * 0.15;
+              const size = 1 + Math.random() * 2;
+              
+              return (
+                <div
+                  key={`smoke-${i}`}
+                  className="absolute bg-white/60 rounded-full"
+                  style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    top: '50%',
+                    left: '50%',
+                    animation: `smokeParticle 1s ease-out ${delay}s forwards`,
+                    '--tx': `${tx}px`,
+                    '--ty': `${ty}px`,
+                  }}
+                />
+              );
+            })}
+            
+            {/* Grosses étincelles brillantes */}
+            {[...Array(8)].map((_, i) => {
+              const angle = (i / 8) * Math.PI * 2 + Math.PI / 8;
+              const distance = 100 + Math.random() * 40;
+              const tx = Math.cos(angle) * distance;
+              const ty = Math.sin(angle) * distance - 50;
+              const delay = i * 0.04;
+              
+              return (
+                <div
+                  key={`spark-${i}`}
+                  className="absolute w-1 h-3 bg-gradient-to-b from-white via-emerald-300 to-transparent rounded-full"
                   style={{
                     top: '50%',
                     left: '50%',
-                    animation: `particleExplosion 0.6s ease-out ${delay}s forwards`,
+                    animation: `sparkExplosion 0.7s ease-out ${delay}s forwards`,
                     '--tx': `${tx}px`,
                     '--ty': `${ty}px`,
+                    '--rotation': `${angle * (180 / Math.PI)}deg`,
                   }}
                 />
               );
@@ -353,35 +417,67 @@ function FloatingDock() {
         
         @keyframes dockDisappear {
           0% {
-            transform: translateX(-50%) translateY(0) scale(1) rotate(0deg);
+            transform: translateX(-50%) translateY(0) scale(1);
             opacity: 1;
             filter: blur(0px) brightness(1);
           }
-          30% {
-            transform: translateX(-50%) translateY(-10px) scale(1.05) rotate(2deg);
-            opacity: 0.9;
-            filter: blur(1px) brightness(1.2);
+          20% {
+            transform: translateX(-50%) translateY(-5px) scale(1.1);
+            opacity: 1;
+            filter: blur(0px) brightness(1.3);
           }
-          60% {
-            transform: translateX(-50%) translateY(-25px) scale(0.7) rotate(-3deg);
-            opacity: 0.4;
-            filter: blur(6px) brightness(1.5);
+          40% {
+            transform: translateX(-50%) translateY(-15px) scale(0.95);
+            opacity: 0.8;
+            filter: blur(3px) brightness(1.6);
+          }
+          70% {
+            transform: translateX(-50%) translateY(-35px) scale(0.6);
+            opacity: 0.3;
+            filter: blur(10px) brightness(2);
           }
           100% {
-            transform: translateX(-50%) translateY(-50px) scale(0.2) rotate(5deg);
+            transform: translateX(-50%) translateY(-60px) scale(0.1);
             opacity: 0;
-            filter: blur(15px) brightness(2);
+            filter: blur(20px) brightness(3);
           }
         }
         
         @keyframes particleExplosion {
           0% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0.8;
+            transform: translate(-50%, -50%) translate(0, 0) scale(1) rotate(0deg);
+            opacity: 1;
           }
           100% {
-            transform: translate(var(--tx, 0), var(--ty, 0)) scale(0);
+            transform: translate(-50%, -50%) translate(var(--tx, 0), var(--ty, 0)) scale(0) rotate(360deg);
             opacity: 0;
+          }
+        }
+        
+        @keyframes smokeParticle {
+          0% {
+            transform: translate(-50%, -50%) translate(0, 0) scale(0.5);
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 0.4;
+          }
+          100% {
+            transform: translate(-50%, -50%) translate(var(--tx, 0), var(--ty, 0)) scale(2.5);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes sparkExplosion {
+          0% {
+            transform: translate(-50%, -50%) translate(0, 0) scale(1) rotate(var(--rotation, 0deg));
+            opacity: 1;
+            filter: brightness(2);
+          }
+          100% {
+            transform: translate(-50%, -50%) translate(var(--tx, 0), var(--ty, 0)) scale(0.3) rotate(calc(var(--rotation, 0deg) + 180deg));
+            opacity: 0;
+            filter: brightness(0.5);
           }
         }
         
@@ -390,33 +486,8 @@ function FloatingDock() {
         }
         
         .dock-disappear {
-          animation: dockDisappear 0.6s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+          animation: dockDisappear 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
           pointer-events: none;
-        }
-        
-        .dock-disappear::before,
-        .dock-disappear::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          border-radius: 2rem;
-          background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
-          animation: particleExplosion 0.6s ease-out forwards;
-        }
-        
-        .dock-disappear::before {
-          --tx: -80px;
-          --ty: -60px;
-          animation-delay: 0.1s;
-        }
-        
-        .dock-disappear::after {
-          --tx: 80px;
-          --ty: -60px;
-          animation-delay: 0.15s;
         }
         
         @keyframes dockBounce {
