@@ -156,11 +156,9 @@ function FloatingDock() {
               }}
               aria-label={social.name}
             >
-              {/* Animated halo effect - always visible */}
+              {/* Animated halo effect - sequential wave */}
               <div className={`absolute -inset-3 bg-gradient-to-br ${social.color} rounded-3xl 
-                              blur-lg opacity-40 group-hover:opacity-70 transition-opacity
-                              animate-pulse`}
-                   style={{ animationDuration: '3s' }}></div>
+                              blur-lg group-hover:opacity-70 transition-opacity dock-halo-${index + 1}`}></div>
               
               {/* Icon background with gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${social.color} rounded-2xl 
@@ -190,11 +188,9 @@ function FloatingDock() {
               animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 4 * 0.08}s both`
             }}
           >
-            {/* Animated halo effect */}
+            {/* Animated halo effect - share button */}
             <div className="absolute -inset-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl 
-                            blur-lg opacity-40 group-hover:opacity-70 transition-opacity
-                            animate-pulse"
-                 style={{ animationDuration: '3s' }}></div>
+                            blur-lg group-hover:opacity-70 transition-opacity dock-halo-5"></div>
             
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl 
                             opacity-90 group-hover:opacity-100 transition-opacity"></div>
@@ -221,11 +217,9 @@ function FloatingDock() {
               animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 5 * 0.08}s both`
             }}
           >
-            {/* Animated halo effect */}
+            {/* Animated halo effect - QR button */}
             <div className="absolute -inset-3 bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl 
-                            blur-lg opacity-40 group-hover:opacity-70 transition-opacity
-                            animate-pulse"
-                 style={{ animationDuration: '3s' }}></div>
+                            blur-lg group-hover:opacity-70 transition-opacity dock-halo-6"></div>
             
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl 
                             opacity-90 group-hover:opacity-100 transition-opacity"></div>
@@ -330,6 +324,29 @@ function FloatingDock() {
             opacity: 1;
           }
         }
+        
+        @keyframes dockHaloWave {
+          0% {
+            opacity: 0.2;
+          }
+          12.5% {
+            opacity: 0.7;
+          }
+          25% {
+            opacity: 0.2;
+          }
+          100% {
+            opacity: 0.2;
+          }
+        }
+        
+        /* Sequential wave effect - 6 icons total */
+        .dock-halo-1 { animation: dockHaloWave 8s ease-in-out infinite; }
+        .dock-halo-2 { animation: dockHaloWave 8s ease-in-out infinite 1.33s; }
+        .dock-halo-3 { animation: dockHaloWave 8s ease-in-out infinite 2.66s; }
+        .dock-halo-4 { animation: dockHaloWave 8s ease-in-out infinite 4s; }
+        .dock-halo-5 { animation: dockHaloWave 8s ease-in-out infinite 5.33s; }
+        .dock-halo-6 { animation: dockHaloWave 8s ease-in-out infinite 6.66s; }
       `}</style>
     </>
   );
