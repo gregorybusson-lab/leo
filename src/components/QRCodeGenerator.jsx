@@ -28,7 +28,7 @@ function QRCodeGenerator() {
   };
 
   return (
-    <div className="fixed bottom-28 right-8 z-40">
+    <div className="fixed bottom-8 right-24 z-40">
       {/* QR Code Button */}
       <button
         onClick={() => setShowQR(!showQR)}
