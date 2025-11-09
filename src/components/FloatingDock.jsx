@@ -8,19 +8,18 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show dock after "Plongez dans l'univers" title comes into view
       const teaserSection = document.getElementById('teaser-section');
       if (teaserSection) {
         const rect = teaserSection.getBoundingClientRect();
         
-        // Show dock when teaser section starts appearing
-        // Hide only when scrolling back to the very top (before teaser section)
-        const shouldBeVisible = rect.top <= window.innerHeight;
+        // Show dock when teaser title has scrolled up and is visible in viewport
+        // This means: teaser section top is above middle of screen AND it's still partially visible
+        const teaserIsInView = rect.top < window.innerHeight * 0.5 && rect.bottom > 0;
         
-        setIsVisible(shouldBeVisible);
+        setIsVisible(teaserIsInView);
         
         // Track if dock has ever been visible (to enable disappear animation)
-        if (shouldBeVisible && !hasBeenVisible) {
+        if (teaserIsInView && !hasBeenVisible) {
           setHasBeenVisible(true);
         }
       }
