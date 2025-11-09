@@ -156,6 +156,12 @@ function FloatingDock() {
               }}
               aria-label={social.name}
             >
+              {/* Animated halo effect - always visible */}
+              <div className={`absolute -inset-3 bg-gradient-to-br ${social.color} rounded-3xl 
+                              blur-lg opacity-40 group-hover:opacity-70 transition-opacity
+                              animate-pulse`}
+                   style={{ animationDuration: '3s' }}></div>
+              
               {/* Icon background with gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${social.color} rounded-2xl 
                               opacity-90 group-hover:opacity-100 transition-opacity`}></div>
@@ -180,7 +186,16 @@ function FloatingDock() {
             className="group relative w-12 h-12 rounded-2xl flex items-center justify-center
                        transition-all duration-300 hover:scale-125 hover:-translate-y-2"
             aria-label="Partager"
+            style={{ 
+              animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 4 * 0.08}s both`
+            }}
           >
+            {/* Animated halo effect */}
+            <div className="absolute -inset-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl 
+                            blur-lg opacity-40 group-hover:opacity-70 transition-opacity
+                            animate-pulse"
+                 style={{ animationDuration: '3s' }}></div>
+            
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl 
                             opacity-90 group-hover:opacity-100 transition-opacity"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl 
@@ -202,7 +217,16 @@ function FloatingDock() {
             className="group relative w-12 h-12 rounded-2xl flex items-center justify-center
                        transition-all duration-300 hover:scale-125 hover:-translate-y-2"
             aria-label="QR Code"
+            style={{ 
+              animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 5 * 0.08}s both`
+            }}
           >
+            {/* Animated halo effect */}
+            <div className="absolute -inset-3 bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl 
+                            blur-lg opacity-40 group-hover:opacity-70 transition-opacity
+                            animate-pulse"
+                 style={{ animationDuration: '3s' }}></div>
+            
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl 
                             opacity-90 group-hover:opacity-100 transition-opacity"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl 
