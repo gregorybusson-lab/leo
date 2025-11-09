@@ -8,11 +8,14 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show dock after "Plongez dans l'univers" title is visible
+      // Show dock after "Plongez dans l'univers" title comes into view
       const teaserSection = document.getElementById('teaser-section');
       if (teaserSection) {
         const rect = teaserSection.getBoundingClientRect();
-        const shouldBeVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        // Show dock when teaser section starts appearing
+        // Hide only when scrolling back to the very top (before teaser section)
+        const shouldBeVisible = rect.top <= window.innerHeight;
         
         setIsVisible(shouldBeVisible);
         
@@ -26,7 +29,7 @@ function FloatingDock() {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hasBeenVisible]);
 
   const handleShare = async () => {
     if (navigator.share) {
