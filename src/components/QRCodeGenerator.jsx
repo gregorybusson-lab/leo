@@ -28,13 +28,13 @@ function QRCodeGenerator() {
   };
 
   return (
-    <div className="fixed bottom-24 right-8 z-40">
+    <div className="fixed bottom-28 right-8 z-40">
       {/* QR Code Button */}
       <button
         onClick={() => setShowQR(!showQR)}
         className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 
                    text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300
-                   flex items-center justify-center group relative"
+                   flex items-center justify-center group relative hover:scale-110"
         aria-label="Générer QR Code"
       >
         <svg 
