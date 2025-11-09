@@ -6,8 +6,7 @@ import BioSection from './components/BioSection'
 import SocialSection from './components/SocialSection'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
-import ShareButton from './components/ShareButton'
-import QRCodeGenerator from './components/QRCodeGenerator'
+import FloatingDock from './components/FloatingDock'
 import { initAdvancedAnalytics } from './utils/analytics'
 
 function App() {
@@ -28,8 +27,7 @@ function App() {
       <SocialSection />
       <Footer />
       <CookieConsent />
-      <ShareButton />
-      <QRCodeGenerator />
+      <FloatingDock />
     </div>
   )
 }
