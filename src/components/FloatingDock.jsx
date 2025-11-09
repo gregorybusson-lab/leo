@@ -3,6 +3,7 @@ import { QRCodeSVG } from 'qrcode.react';
 
 function FloatingDock() {
   const [isVisible, setIsVisible] = useState(false);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [showQR, setShowQR] = useState(false);
 
   useEffect(() => {
@@ -11,8 +12,14 @@ function FloatingDock() {
       const teaserSection = document.getElementById('teaser-section');
       if (teaserSection) {
         const rect = teaserSection.getBoundingClientRect();
-        // Show dock when teaser section title comes into view (within viewport)
-        setIsVisible(rect.top < window.innerHeight && rect.bottom > 0);
+        const shouldBeVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        setIsVisible(shouldBeVisible);
+        
+        // Track if dock has ever been visible (to enable disappear animation)
+        if (shouldBeVisible && !hasBeenVisible) {
+          setHasBeenVisible(true);
+        }
       }
     };
 
@@ -126,11 +133,14 @@ function FloatingDock() {
     },
   ];
 
+  // Don't render if never been visible
+  if (!hasBeenVisible && !isVisible) return null;
+
   return (
     <>
       {/* iOS-style Dock */}
       <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)] px-2 
-                       ${isVisible ? 'dock-appear' : 'dock-disappear'}`}>
+                       ${isVisible ? 'dock-appear' : hasBeenVisible ? 'dock-disappear' : ''}`}>
         {/* Glassmorphism container */}
         <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
                         border border-white/20 flex items-center gap-2 sm:gap-3 sm:px-4">
@@ -237,6 +247,33 @@ function FloatingDock() {
             </svg>
           </button>
         </div>
+        
+        {/* Particle effects for disappear animation */}
+        {!isVisible && hasBeenVisible && (
+          <>
+            {[...Array(12)].map((_, i) => {
+              const angle = (i / 12) * Math.PI * 2;
+              const distance = 60 + Math.random() * 40;
+              const tx = Math.cos(angle) * distance;
+              const ty = Math.sin(angle) * distance - 30;
+              const delay = i * 0.03;
+              
+              return (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full"
+                  style={{
+                    top: '50%',
+                    left: '50%',
+                    animation: `particleExplosion 0.6s ease-out ${delay}s forwards`,
+                    '--tx': `${tx}px`,
+                    '--ty': `${ty}px`,
+                  }}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
 
       {/* QR Code Modal */}
@@ -314,29 +351,34 @@ function FloatingDock() {
         
         @keyframes dockDisappear {
           0% {
-            transform: translateX(-50%) translateY(0) scale(1);
+            transform: translateX(-50%) translateY(0) scale(1) rotate(0deg);
             opacity: 1;
-            filter: blur(0px);
+            filter: blur(0px) brightness(1);
           }
-          50% {
-            transform: translateX(-50%) translateY(-20px) scale(0.9);
-            opacity: 0.5;
-            filter: blur(2px);
+          30% {
+            transform: translateX(-50%) translateY(-10px) scale(1.05) rotate(2deg);
+            opacity: 0.9;
+            filter: blur(1px) brightness(1.2);
+          }
+          60% {
+            transform: translateX(-50%) translateY(-25px) scale(0.7) rotate(-3deg);
+            opacity: 0.4;
+            filter: blur(6px) brightness(1.5);
           }
           100% {
-            transform: translateX(-50%) translateY(-40px) scale(0.5);
+            transform: translateX(-50%) translateY(-50px) scale(0.2) rotate(5deg);
             opacity: 0;
-            filter: blur(8px);
+            filter: blur(15px) brightness(2);
           }
         }
         
-        @keyframes dustParticle {
+        @keyframes particleExplosion {
           0% {
             transform: translate(0, 0) scale(1);
-            opacity: 1;
+            opacity: 0.8;
           }
           100% {
-            transform: translate(var(--tx), var(--ty)) scale(0);
+            transform: translate(var(--tx, 0), var(--ty, 0)) scale(0);
             opacity: 0;
           }
         }
@@ -346,8 +388,33 @@ function FloatingDock() {
         }
         
         .dock-disappear {
-          animation: dockDisappear 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          animation: dockDisappear 0.6s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
           pointer-events: none;
+        }
+        
+        .dock-disappear::before,
+        .dock-disappear::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          border-radius: 2rem;
+          background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+          animation: particleExplosion 0.6s ease-out forwards;
+        }
+        
+        .dock-disappear::before {
+          --tx: -80px;
+          --ty: -60px;
+          animation-delay: 0.1s;
+        }
+        
+        .dock-disappear::after {
+          --tx: 80px;
+          --ty: -60px;
+          animation-delay: 0.15s;
         }
         
         @keyframes dockBounce {
