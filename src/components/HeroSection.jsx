@@ -173,6 +173,51 @@ function HeroSection() {
             <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — <span className="font-bold text-emerald-400">Sortie le 21 novembre 2025</span>
           </p>
           
+          {/* Pre-save Button - NEW for ORPHÉE EP */}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              alert('🎵 Le pré-enregistrement pour ORPHÉE sera disponible bientôt !\n\nTu pourras ajouter l\'EP à ta bibliothèque avant le 21 novembre 2025.\n\nEn attendant, écoute FEU ci-dessous ! 👇');
+              if (window.gtag) {
+                window.gtag('event', 'click_presave', {
+                  'event_category': 'conversion',
+                  'event_label': 'orphee_ep_presave'
+                });
+              }
+            }}
+            className="group relative px-10 py-5 text-lg font-semibold text-white overflow-hidden rounded-full
+                       transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50
+                       mb-4 inline-block"
+          >
+            {/* Gradient de fond violet/rose animé */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-pink-600 to-purple-800 
+                           transition-all duration-500 group-hover:scale-150"></div>
+            
+            {/* Effet de fumée/brume */}
+            <div className="absolute inset-0 bg-gradient-to-t from-purple-950/80 via-transparent to-pink-900/60 
+                           opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+            
+            {/* Effet de brillance qui traverse le bouton */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-300/40 to-transparent 
+                           -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            
+            {/* Cercles lumineux violets animés au hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-purple-400/30 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-pink-400/20 rounded-full blur-lg animate-pulse delay-100"></div>
+            </div>
+            
+            {/* Bordure lumineuse violette */}
+            <div className="absolute inset-0 rounded-full border-2 border-purple-500/50 
+                           group-hover:border-purple-400 group-hover:scale-105 transition-all duration-500"></div>
+            
+            {/* Texte du bouton */}
+            <span className="relative z-10 tracking-wide flex items-center gap-2 justify-center">
+              <span>💾</span> Pré-enregistrer ORPHÉE
+            </span>
+          </a>
+          
           {/* Bouton premium avec ambiance vert fumé */}
           <button
             onClick={scrollToListen}
