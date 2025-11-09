@@ -126,13 +126,13 @@ function FloatingDock() {
   return (
     <>
       {/* iOS-style Dock */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)] px-2"
            style={{
              animation: 'dockSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
            }}>
         {/* Glassmorphism container */}
-        <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-4 py-3 shadow-2xl 
-                        border border-white/20 flex items-center gap-3">
+        <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
+                        border border-white/20 flex items-center gap-2 sm:gap-3 sm:px-4">
           
           {/* Social Icons */}
           {socialLinks.map((social, index) => (
@@ -149,8 +149,8 @@ function FloatingDock() {
                   });
                 }
               }}
-              className="group relative w-12 h-12 rounded-2xl flex items-center justify-center
-                         transition-all duration-300 hover:scale-125 hover:-translate-y-2"
+              className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center
+                         transition-all duration-300 hover:scale-125 hover:-translate-y-2 flex-shrink-0"
               style={{ 
                 animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + index * 0.08}s both`
               }}
@@ -183,8 +183,8 @@ function FloatingDock() {
           {/* Share Button */}
           <button
             onClick={handleShare}
-            className="group relative w-12 h-12 rounded-2xl flex items-center justify-center
-                       transition-all duration-300 hover:scale-125 hover:-translate-y-2"
+            className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center
+                       transition-all duration-300 hover:scale-125 hover:-translate-y-2 flex-shrink-0"
             aria-label="Partager"
             style={{ 
               animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 4 * 0.08}s both`
@@ -214,8 +214,8 @@ function FloatingDock() {
           {/* QR Code Button */}
           <button
             onClick={() => setShowQR(!showQR)}
-            className="group relative w-12 h-12 rounded-2xl flex items-center justify-center
-                       transition-all duration-300 hover:scale-125 hover:-translate-y-2"
+            className="group relative w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center
+                       transition-all duration-300 hover:scale-125 hover:-translate-y-2 flex-shrink-0"
             aria-label="QR Code"
             style={{ 
               animation: `dockBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + 5 * 0.08}s both`
