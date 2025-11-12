@@ -79,15 +79,12 @@ function HeroSection() {
       {/* Animated background blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
-      {/* Dark overlay for better text readability - MAIS PAS EN HAUT */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/70"></div>
       
       {/* DÉGRADÉ NOIR EN HAUT - Z-INDEX MAX POUR ÊTRE AU DESSUS DE TOUT */}
       <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/50 to-transparent z-[100]" 
            style={{ pointerEvents: 'none' }}></div>
-      
-      {/* Gradient fade to black at bottom for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black"></div>
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
