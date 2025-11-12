@@ -5,6 +5,21 @@ function FloatingDock() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [showQR, setShowQR] = useState(false);
+  const [hasCookieBanner, setHasCookieBanner] = useState(false);
+
+  // Check if cookie banner is visible
+  useEffect(() => {
+    const checkCookieBanner = () => {
+      const consent = localStorage.getItem('cookieConsent');
+      setHasCookieBanner(!consent);
+    };
+    
+    checkCookieBanner();
+    
+    // Re-check when localStorage changes
+    window.addEventListener('storage', checkCookieBanner);
+    return () => window.removeEventListener('storage', checkCookieBanner);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -143,8 +158,9 @@ function FloatingDock() {
 
   return (
     <>
-      {/* iOS-style Dock */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] max-w-[calc(100vw-2rem)] px-2 
+      {/* iOS-style Dock - positioned above cookie banner when present */}
+      <div className={`fixed left-1/2 -translate-x-1/2 z-[70] max-w-[calc(100vw-2rem)] px-2 transition-all duration-300
+                       ${hasCookieBanner ? 'bottom-28' : 'bottom-6'}
                        ${isVisible ? 'dock-appear' : hasBeenVisible ? 'dock-disappear' : ''}`}>
         {/* Glassmorphism container */}
         <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
