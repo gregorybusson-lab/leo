@@ -54,7 +54,7 @@ function TeaserSection() {
   }, []);
 
   return (
-    <section id="teaser-section" className="py-20 px-4 bg-gradient-to-b from-black to-zinc-900">
+    <section id="teaser-section" className="py-20 px-4 bg-black">
       <div className="max-w-5xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           PLONGEZ DANS L'UNIVERS

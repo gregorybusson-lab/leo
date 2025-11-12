@@ -51,18 +51,18 @@ function AnnouncementSection() {
   }, []);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black to-zinc-900">
+    <section className="py-20 px-4 bg-black">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-script text-5xl md:text-6xl text-center mb-4 text-emerald-400">
+        <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           RENDEZ-VOUS LE 21 NOVEMBRE !
         </h2>
         <p className="text-center text-gray-300 mb-12 text-lg">
           En attendant, j'ai un truc super important à vous dire
         </p>
         
-        {/* Format vertical optimisé pour YouTube avec effet de halo lent */}
+        {/* Format standard 16:9 pour YouTube avec effet de halo lent */}
         <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-[400px]">
+          <div className="relative w-full max-w-4xl">
             {/* Glow effect lent et doux autour de la vidéo */}
             <div 
               className={`absolute -inset-8 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 
@@ -81,8 +81,8 @@ function AnnouncementSection() {
               }}
             ></div>
             
-            {/* Video player */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[9/16] max-w-[400px] mx-auto">
+            {/* Video player - Format 16:9 standard */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video w-full">
               <iframe
                 id="youtube-announcement-player"
                 className="w-full h-full"
