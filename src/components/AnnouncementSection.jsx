@@ -51,7 +51,7 @@ function AnnouncementSection() {
   }, []);
 
   return (
-    <section className="py-20 px-4 bg-black">
+    <section id="announcement-section" className="py-20 px-4 bg-black">
       <div className="max-w-5xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           RENDEZ-VOUS LE 21 NOVEMBRE !

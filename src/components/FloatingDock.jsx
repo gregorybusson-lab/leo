@@ -8,21 +8,21 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const teaserSection = document.getElementById('teaser-section');
-      if (teaserSection) {
-        const rect = teaserSection.getBoundingClientRect();
+      const announcementSection = document.getElementById('announcement-section');
+      if (announcementSection) {
+        const rect = announcementSection.getBoundingClientRect();
         
-        // Show dock when we scroll past the middle of teaser section
-        // Once visible, stay visible UNLESS we scroll back up to the very top (teaser not reached yet)
-        const hasReachedTeaser = rect.top < window.innerHeight * 0.5;
+        // Show dock when we scroll past the middle of announcement section
+        // Once visible, stay visible UNLESS we scroll back up to the very top (announcement not reached yet)
+        const hasReachedAnnouncement = rect.top < window.innerHeight * 0.5;
         
-        if (hasReachedTeaser) {
+        if (hasReachedAnnouncement) {
           setIsVisible(true);
           if (!hasBeenVisible) {
             setHasBeenVisible(true);
           }
         } else if (hasBeenVisible) {
-          // Only hide if we scrolled back up before the teaser section
+          // Only hide if we scrolled back up before the announcement section
           setIsVisible(false);
         }
       }

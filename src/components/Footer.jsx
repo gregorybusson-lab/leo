@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="py-12 px-4 bg-zinc-950 border-t border-zinc-800">
+    <footer className="py-12 px-4 pb-32 bg-zinc-950 border-t border-zinc-800">
       <div className="max-w-6xl mx-auto text-center">
         <p className="text-gray-400 text-sm">
           © 2025 LÉO BSN — Premier EP - Orphée
