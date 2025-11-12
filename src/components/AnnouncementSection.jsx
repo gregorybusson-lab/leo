@@ -51,8 +51,11 @@ function AnnouncementSection() {
   }, []);
 
   return (
-    <section id="announcement-section" className="py-20 px-4 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section id="announcement-section" className="relative py-20 px-4 bg-black">
+      {/* Gradient de transition avec le Hero au-dessus */}
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black to-transparent"></div>
+      
+      <div className="relative max-w-5xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           RENDEZ-VOUS LE 21 NOVEMBRE !
         </h2>
