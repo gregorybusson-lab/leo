@@ -80,7 +80,7 @@ function HeroSection() {
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       
       {/* Dark overlay for better text readability - MAIS PAS EN HAUT */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
       
       {/* DÉGRADÉ NOIR EN HAUT - Z-INDEX MAX POUR ÊTRE AU DESSUS DE TOUT */}
       <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black/50 to-transparent z-[100]" 
