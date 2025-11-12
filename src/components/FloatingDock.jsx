@@ -16,9 +16,12 @@ function FloatingDock() {
     
     checkCookieBanner();
     
-    // Re-check when localStorage changes
-    window.addEventListener('storage', checkCookieBanner);
-    return () => window.removeEventListener('storage', checkCookieBanner);
+    // Listen for custom event when consent changes
+    window.addEventListener('cookieConsentChanged', checkCookieBanner);
+    
+    return () => {
+      window.removeEventListener('cookieConsentChanged', checkCookieBanner);
+    };
   }, []);
 
   useEffect(() => {

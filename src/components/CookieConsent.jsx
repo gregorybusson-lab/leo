@@ -68,6 +68,9 @@ function CookieConsent() {
     
     setShowBanner(false);
     initializeAnalytics();
+    
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('cookieConsentChanged'));
   };
 
   const refuseCookies = () => {
@@ -83,6 +86,9 @@ function CookieConsent() {
     
     setShowBanner(false);
     // Aucun tracking ne sera chargé
+    
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('cookieConsentChanged'));
   };
 
   if (!showBanner) return null;
