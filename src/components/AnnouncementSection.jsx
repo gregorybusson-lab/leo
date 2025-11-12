@@ -63,31 +63,31 @@ function AnnouncementSection() {
           En attendant, j'ai un truc super important à vous dire
         </p>
         
-        {/* Format standard 16:9 pour YouTube avec effet de halo EXAGÉRÉ et lent */}
+        {/* Format standard 16:9 pour YouTube avec effet de halo réduit */}
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-4xl">
-            {/* Halo externe massif - Très visible */}
+            {/* Halo externe - Réduit */}
             <div 
-              className={`absolute -inset-24 bg-gradient-to-r from-emerald-500/40 via-teal-500/40 to-emerald-500/40 
-                           rounded-3xl blur-[120px] transition-all duration-500`}
+              className={`absolute -inset-16 bg-gradient-to-r from-emerald-500/25 via-teal-500/25 to-emerald-500/25 
+                           rounded-3xl blur-[80px] transition-all duration-500`}
               style={{
                 animation: isPlaying ? 'slowPulse 4s ease-in-out infinite' : 'slowPulse 6s ease-in-out infinite'
               }}
             ></div>
             
-            {/* Halo moyen - Intense */}
+            {/* Halo moyen */}
             <div 
-              className={`absolute -inset-16 bg-gradient-to-r from-emerald-500/50 via-teal-500/50 to-emerald-500/50 
-                           rounded-2xl blur-[80px] transition-all duration-400`}
+              className={`absolute -inset-10 bg-gradient-to-r from-emerald-500/35 via-teal-500/35 to-emerald-500/35 
+                           rounded-2xl blur-[50px] transition-all duration-400`}
               style={{
                 animation: isPlaying ? 'slowPulse 5s ease-in-out infinite 0.5s' : 'slowPulse 7s ease-in-out infinite 0.5s'
               }}
             ></div>
             
-            {/* Halo proche - Très lumineux */}
+            {/* Halo proche */}
             <div 
-              className={`absolute -inset-10 bg-gradient-to-r from-emerald-400/60 via-teal-400/60 to-emerald-400/60 
-                           rounded-2xl blur-[60px] transition-all duration-300`}
+              className={`absolute -inset-6 bg-gradient-to-r from-emerald-400/40 via-teal-400/40 to-emerald-400/40 
+                           rounded-2xl blur-[30px] transition-all duration-300`}
               style={{
                 animation: isPlaying ? 'slowPulse 6s ease-in-out infinite 1s' : 'slowPulse 8s ease-in-out infinite 1s'
               }}
