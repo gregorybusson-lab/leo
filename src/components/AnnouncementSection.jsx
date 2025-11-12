@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react';
+import { loadYouTubeAPI } from '../utils/youtubeAPI';
 
 function AnnouncementSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    // Load YouTube IFrame API
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
     // Initialize player when API is ready
-    window.onYouTubeIframeAPIReady = () => {
+    loadYouTubeAPI().then(() => {
       new window.YT.Player('youtube-announcement-player', {
         events: {
           'onStateChange': (event) => {
@@ -34,7 +29,6 @@ function AnnouncementSection() {
                 });
               }
             } else if (event.data === window.YT.PlayerState.ENDED) {
-              // 0 = ENDED
               setIsPlaying(false);
               // Track video ended
               if (window.gtag) {
@@ -47,7 +41,7 @@ function AnnouncementSection() {
           }
         }
       });
-    };
+    });
   }, []);
 
   return (

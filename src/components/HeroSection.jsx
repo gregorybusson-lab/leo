@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import { throttle } from '../utils/helpers';
 
 function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       setScrollY(window.scrollY);
-    };
+    }, 16); // ~60fps
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

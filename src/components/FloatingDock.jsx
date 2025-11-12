@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
+import { throttle } from '../utils/helpers';
 
 function FloatingDock() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +26,7 @@ function FloatingDock() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const announcementSection = document.getElementById('announcement-section');
       if (announcementSection) {
         const rect = announcementSection.getBoundingClientRect();
@@ -44,9 +45,9 @@ function FloatingDock() {
           setIsVisible(false);
         }
       }
-    };
+    }, 100); // Throttle à 100ms
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasBeenVisible]);

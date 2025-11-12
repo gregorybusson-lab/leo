@@ -1,18 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import { loadYouTubeAPI } from '../utils/youtubeAPI';
 
 function TeaserSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const playerRef = useRef(null);
 
   useEffect(() => {
-    // Charger l'API YouTube
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
     // Callback quand l'API est prête
-    window.onYouTubeIframeAPIReady = () => {
+    loadYouTubeAPI().then(() => {
       playerRef.current = new window.YT.Player('youtube-player', {
         events: {
           onStateChange: (event) => {
@@ -50,7 +45,7 @@ function TeaserSection() {
           }
         }
       });
-    };
+    });
   }, []);
 
   return (
