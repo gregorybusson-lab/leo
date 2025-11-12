@@ -30,12 +30,29 @@ function CookieConsent() {
       gtag('config', 'G-3RR8Y6M8LN');
     };
     
-    // Charger Microsoft Clarity
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "u30783r8rh");
+    // Charger Microsoft Clarity avec délai pour s'assurer que les styles sont chargés
+    // Attendre que le DOM et les styles soient complètement chargés
+    if (document.readyState === 'complete') {
+      // Si déjà chargé, attendre un peu pour s'assurer que Vite a injecté les styles
+      setTimeout(() => {
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u30783r8rh");
+      }, 500);
+    } else {
+      // Sinon attendre l'événement load
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "u30783r8rh");
+        }, 500);
+      });
+    }
   };
 
   const acceptCookies = () => {
