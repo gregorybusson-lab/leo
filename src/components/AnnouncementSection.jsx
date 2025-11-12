@@ -108,20 +108,6 @@ function AnnouncementSection() {
           </div>
         </div>
       </div>
-
-      {/* Animation CSS pour le halo lent et exagéré */}
-      <style jsx>{`
-        @keyframes slowPulse {
-          0%, 100% {
-            opacity: 0.5;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-        }
-      `}</style>
     </section>
   );
 }
