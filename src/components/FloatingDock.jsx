@@ -160,7 +160,7 @@ function FloatingDock() {
     <>
       {/* iOS-style Dock - positioned above cookie banner when present */}
       <div className={`fixed left-1/2 -translate-x-1/2 z-[70] max-w-[calc(100vw-2rem)] px-2 transition-all duration-300
-                       ${hasCookieBanner ? 'bottom-28' : 'bottom-6'}
+                       ${hasCookieBanner ? 'bottom-48 sm:bottom-32' : 'bottom-6'}
                        ${isVisible ? 'dock-appear' : hasBeenVisible ? 'dock-disappear' : ''}`}>
         {/* Glassmorphism container */}
         <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
