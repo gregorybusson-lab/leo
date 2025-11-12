@@ -1,6 +1,6 @@
 function BioSection() {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-zinc-900 to-black">
+    <section className="py-20 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-16">
           À PROPOS DE LÉO

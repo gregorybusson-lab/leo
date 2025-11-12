@@ -90,7 +90,7 @@ function ListenSection() {
   ];
 
   return (
-    <section id="listen-section" className="py-20 px-4 bg-zinc-900">
+    <section id="listen-section" className="py-20 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           EN ATTENDANT L'EP

@@ -60,24 +60,33 @@ function AnnouncementSection() {
           En attendant, j'ai un truc super important à vous dire
         </p>
         
-        {/* Format standard 16:9 pour YouTube avec effet de halo lent */}
+        {/* Format standard 16:9 pour YouTube avec effet de halo EXAGÉRÉ et lent */}
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-4xl">
-            {/* Glow effect lent et doux autour de la vidéo */}
+            {/* Halo externe massif - Très visible */}
             <div 
-              className={`absolute -inset-8 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 
-                           rounded-2xl blur-2xl transition-all duration-300`}
+              className={`absolute -inset-24 bg-gradient-to-r from-emerald-500/40 via-teal-500/40 to-emerald-500/40 
+                           rounded-3xl blur-[120px] transition-all duration-500`}
               style={{
                 animation: isPlaying ? 'slowPulse 4s ease-in-out infinite' : 'slowPulse 6s ease-in-out infinite'
               }}
             ></div>
             
-            {/* Halo secondaire encore plus doux */}
+            {/* Halo moyen - Intense */}
             <div 
-              className={`absolute -inset-12 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 
-                           rounded-2xl blur-3xl transition-all duration-500`}
+              className={`absolute -inset-16 bg-gradient-to-r from-emerald-500/50 via-teal-500/50 to-emerald-500/50 
+                           rounded-2xl blur-[80px] transition-all duration-400`}
               style={{
-                animation: isPlaying ? 'slowPulse 5s ease-in-out infinite 1s' : 'slowPulse 7s ease-in-out infinite 1s'
+                animation: isPlaying ? 'slowPulse 5s ease-in-out infinite 0.5s' : 'slowPulse 7s ease-in-out infinite 0.5s'
+              }}
+            ></div>
+            
+            {/* Halo proche - Très lumineux */}
+            <div 
+              className={`absolute -inset-10 bg-gradient-to-r from-emerald-400/60 via-teal-400/60 to-emerald-400/60 
+                           rounded-2xl blur-[60px] transition-all duration-300`}
+              style={{
+                animation: isPlaying ? 'slowPulse 6s ease-in-out infinite 1s' : 'slowPulse 8s ease-in-out infinite 1s'
               }}
             ></div>
             
@@ -94,22 +103,22 @@ function AnnouncementSection() {
               ></iframe>
             </div>
             
-            {/* Effet de reflet en dessous */}
-            <div className="absolute -bottom-8 left-0 right-0 h-16 bg-gradient-to-b from-emerald-500/10 to-transparent blur-xl"></div>
+            {/* Effet de reflet en dessous - Plus visible */}
+            <div className="absolute -bottom-12 left-0 right-0 h-24 bg-gradient-to-b from-emerald-500/20 to-transparent blur-2xl"></div>
           </div>
         </div>
       </div>
 
-      {/* Animation CSS pour le halo lent */}
+      {/* Animation CSS pour le halo lent et exagéré */}
       <style jsx>{`
         @keyframes slowPulse {
           0%, 100% {
-            opacity: 0.3;
+            opacity: 0.5;
             transform: scale(1);
           }
           50% {
-            opacity: 0.6;
-            transform: scale(1.05);
+            opacity: 1;
+            transform: scale(1.1);
           }
         }
       `}</style>
