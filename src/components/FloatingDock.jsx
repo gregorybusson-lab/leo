@@ -144,7 +144,7 @@ function FloatingDock() {
   return (
     <>
       {/* iOS-style Dock */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] max-w-[calc(100vw-2rem)] px-2 
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] max-w-[calc(100vw-2rem)] px-2 
                        ${isVisible ? 'dock-appear' : hasBeenVisible ? 'dock-disappear' : ''}`}>
         {/* Glassmorphism container */}
         <div className="bg-white/10 backdrop-blur-2xl rounded-[2rem] px-3 py-3 shadow-2xl 
@@ -345,7 +345,7 @@ function FloatingDock() {
       {/* QR Code Modal */}
       {showQR && (
         <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[80] flex items-center justify-center p-4"
           onClick={() => setShowQR(false)}
         >
           <div 
