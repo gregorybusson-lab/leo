@@ -51,9 +51,9 @@ function AnnouncementSection() {
   }, []);
 
   return (
-    <section id="announcement-section" className="relative py-20 px-4 bg-black">
+    <section id="announcement-section" className="relative -mt-32 pt-32 py-20 px-4 bg-black">
       {/* Gradient de transition avec le Hero au-dessus */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black via-black to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/0 via-black/60 to-black"></div>
       
       <div className="relative max-w-5xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
