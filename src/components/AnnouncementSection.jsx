@@ -50,13 +50,6 @@ function AnnouncementSection() {
       <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/0 via-black/60 to-black"></div>
       
       <div className="relative max-w-5xl mx-auto">
-        <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
-          RENDEZ-VOUS LE 21 NOVEMBRE !
-        </h2>
-        <p className="text-center text-gray-300 mb-12 text-lg">
-          En attendant, j'ai un truc super important à vous dire
-        </p>
-        
         {/* Format standard 16:9 pour YouTube avec effet de halo réduit */}
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-4xl">

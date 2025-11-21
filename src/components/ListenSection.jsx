@@ -57,7 +57,7 @@ function ListenSection() {
     },
     { 
       name: 'Tidal', 
-      url: 'https://tidal.com/browse/album/395695113', 
+      url: 'https://tidal.com/browse/album/475109856?u', 
       color: 'bg-black hover:bg-gray-900',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -143,7 +143,7 @@ function ListenSection() {
                            border-2 border-emerald-500/30 hover:border-emerald-400/60">
               <iframe
                 style={{ borderRadius: '12px' }}
-                src="https://open.spotify.com/embed/artist/3hDLQPQ6PZqxdHNgCQVhTO?utm_source=generator"
+                src="https://open.spotify.com/embed/album/3hdPTbv6C62gfyG9uEYJQF?utm_source=generator"
                 width="100%"
                 height="380"
                 frameBorder="0"

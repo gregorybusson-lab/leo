@@ -93,9 +93,10 @@ function TeaserSection() {
             {/* Container de la vidéo */}
             <div className="relative group">
               <div 
-                className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl 
+                className="relative w-full rounded-2xl overflow-hidden shadow-2xl 
                            transform transition-all duration-500 hover:scale-[1.02] hover:shadow-emerald-500/50
                            border-2 border-emerald-500/30 hover:border-emerald-400/60"
+                style={{ aspectRatio: '9/16' }}
               >
                 <iframe
                   id="youtube-player"
