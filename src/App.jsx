@@ -18,13 +18,13 @@ function App() {
     // Handle anchor links on page load
     const hash = window.location.hash;
     if (hash) {
-      // Small delay to ensure DOM is ready
+      // Delay to let page render first, then smooth scroll
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      }, 100);
+      }, 800); // 800ms pour que l'utilisateur voie la page avant le scroll
     }
     
     // Cleanup on unmount
