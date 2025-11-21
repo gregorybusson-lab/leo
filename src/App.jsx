@@ -24,10 +24,10 @@ function App() {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          // DESKTOP: montre le titre + player (offset négatif pour voir le haut)
-          // MOBILE: saute le titre, montre UNIQUEMENT le player (offset positif pour descendre)
+          // DESKTOP: REMONTE BEAUCOUP pour montrer le titre "ÉCOUTER L'EP" + player
+          // MOBILE: DESCEND pour montrer UNIQUEMENT le player (pas le titre)
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition + (isMobile ? 150 : -100); // MOBILE: +150 (descend), DESKTOP: -100 (remonte pour voir titre)
+          const offsetPosition = elementPosition + (isMobile ? 150 : -200); // MOBILE: +150, DESKTOP: -200 (remonte BEAUCOUP plus)
           
           window.scrollTo({
             top: offsetPosition,
