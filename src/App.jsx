@@ -15,6 +15,18 @@ function App() {
     // Initialize advanced analytics tracking
     const cleanup = initAdvancedAnalytics();
     
+    // Handle anchor links on page load
+    const hash = window.location.hash;
+    if (hash) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+    
     // Cleanup on unmount
     return cleanup;
   }, []);
