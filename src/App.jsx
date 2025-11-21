@@ -22,10 +22,10 @@ function App() {
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
       <HeroSection />
-      <AnnouncementSection />
-      <TeaserSection />
       <ListenSection />
       <BioSection />
+      <TeaserSection />
+      <AnnouncementSection />
       <SocialSection />
       <Footer />
       <CookieConsent />

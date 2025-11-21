@@ -1,0 +1,14 @@
+/Users/gregory.busson/.vscode/extensions/ruakr.ftp-kr-1.4.5
+
+[ftp-kr Reporting]
+platform: darwin
+arch: arm64
+
+[Error]
+message: /Users/gregory.busson/leo/src/components/CookieConsent.jsx ftp-kr is not inited
+
+[Stack Trace]
+Error: /Users/gregory.busson/leo/src/components/CookieConsent.jsx ftp-kr is not inited
+    at Workspace.fromFile (/Users/gregory.busson/.vscode/extensions/ruakr.ftp-kr-1.4.5/src/vsutil/ws.ts:162:27)
+    at runCommand (/Users/gregory.busson/.vscode/extensions/ruakr.ftp-kr-1.4.5/src/vsutil/cmd.ts:69:35)
+    at iy.h (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:114:41613)

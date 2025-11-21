@@ -6,7 +6,7 @@ function ListenSection() {
   const platforms = [
     { 
       name: 'Spotify', 
-      url: 'https://open.spotify.com/intl-fr/album/4ZTpS3Siiq0TY6WaRfhVO5', 
+      url: 'https://open.spotify.com/intl-fr/album/3hdPTbv6C62gfyG9uEYJQF', 
       color: 'bg-[#1DB954] hover:bg-[#1ed760]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@ function ListenSection() {
     },
     { 
       name: 'Apple Music', 
-      url: 'https://music.apple.com/fr/album/feu-single/1827224190?uo=4', 
+      url: 'https://music.apple.com/fr/album/orph%C3%A9e-ep/1853985113', 
       color: 'bg-[#FA243C] hover:bg-[#ff4458]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 814 1000">
@@ -26,7 +26,7 @@ function ListenSection() {
     },
     { 
       name: 'Deezer', 
-      url: 'https://www.deezer.com/fr/album/789684541', 
+      url: 'https://www.deezer.com/fr/album/860077222', 
       color: 'bg-[#FF0092] hover:bg-[#ff1aa5]',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 200 200" fill="currentColor">
@@ -47,7 +47,7 @@ function ListenSection() {
     },
     { 
       name: 'YouTube Music', 
-      url: 'https://music.youtube.com/watch?v=9ez2ksLZT34', 
+      url: 'https://music.youtube.com/playlist?list=OLAK5uy_kCIbC-ANO6DgjGaT51sPOTOIgGXcRoT1I', 
       color: 'bg-[#FF0000] hover:bg-[#ff1a1a]',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@ function ListenSection() {
     },
     { 
       name: 'Tidal', 
-      url: 'https://tidal.com/album/448619727/track/448619728', 
+      url: 'https://tidal.com/browse/album/395695113', 
       color: 'bg-black hover:bg-gray-900',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -67,7 +67,7 @@ function ListenSection() {
     },
     { 
       name: 'Qobuz', 
-      url: 'https://open.qobuz.com/album/y04aawphdvcsb', 
+      url: 'https://open.qobuz.com/album/zsmz3rrxbqipo', 
       color: 'bg-white hover:bg-gray-100 text-black',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 32 32" fill="currentColor">
@@ -79,7 +79,7 @@ function ListenSection() {
     },
     { 
       name: 'Amazon Music', 
-      url: 'https://www.amazon.de/dp/B0FHWPFBLS', 
+      url: 'https://music.amazon.fr/albums/B0G31DJY9N', 
       color: 'bg-[#1A98FF] hover:bg-[#0d89ff]',
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -93,10 +93,10 @@ function ListenSection() {
     <section id="listen-section" className="py-20 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
-          EN ATTENDANT L'EP
+          ÉCOUTER L'EP
         </h2>
         <p className="text-center text-gray-300 mb-12 max-w-2xl mx-auto text-lg">
-          Écoutez le premier single de l'EP, FEU, déjà disponible sur toutes les plateformes
+          L'EP ORPHÉE est maintenant disponible sur toutes les plateformes
         </p>
 
         {/* Spotify Embed - Artist Profile avec halo TRÈS large et lent */}
