@@ -18,13 +18,23 @@ function App() {
     // Handle anchor links on page load
     const hash = window.location.hash;
     if (hash) {
+      const isMobile = window.innerWidth < 768;
+      const delay = isMobile ? 0 : 800; // Pas de délai sur mobile, 800ms sur desktop
+      
       // Delay to let page render first, then smooth scroll
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Scroll avec un offset pour ne pas voir la flèche et éviter le dock
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - (isMobile ? 80 : 100); // Offset plus important sur desktop
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
-      }, 800); // 800ms pour que l'utilisateur voie la page avant le scroll
+      }, delay);
     }
     
     // Cleanup on unmount
