@@ -19,21 +19,22 @@ function App() {
     const hash = window.location.hash;
     if (hash) {
       const isMobile = window.innerWidth < 768;
+      const delay = isMobile ? 0 : 800; // MOBILE: instant, DESKTOP: 800ms pour voir la page d'abord
       
-      // Scroll directement sans délai sur desktop et mobile
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          // Scroll avec un offset pour ne pas voir la flèche et éviter le dock
+          // MOBILE: scroll plus bas pour voir le player directement (pas le titre)
+          // DESKTOP: scroll pour voir le titre + player
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - (isMobile ? 80 : 100); // Offset plus important sur desktop
+          const offsetPosition = elementPosition - (isMobile ? 20 : 100); // MOBILE: -20px (très bas), DESKTOP: -100px
           
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
           });
         }
-      }, 100); // Petit délai technique pour que le DOM soit prêt
+      }, delay);
     }
     
     // Cleanup on unmount
