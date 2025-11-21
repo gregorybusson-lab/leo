@@ -145,7 +145,7 @@ function ListenSection() {
                 style={{ borderRadius: '12px' }}
                 src="https://open.spotify.com/embed/album/3hdPTbv6C62gfyG9uEYJQF?utm_source=generator"
                 width="100%"
-                height="380"
+                height="480"
                 frameBorder="0"
                 allowFullScreen=""
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

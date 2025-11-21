@@ -49,7 +49,7 @@ function TeaserSection() {
   }, []);
 
   return (
-    <section id="teaser-section" className="py-20 px-4 bg-black">
+    <section id="teaser-section" className="py-32 px-4 bg-black">
       <div className="max-w-5xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           PLONGEZ DANS L'UNIVERS

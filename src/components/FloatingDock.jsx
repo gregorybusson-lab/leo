@@ -31,9 +31,9 @@ function FloatingDock() {
       if (listenSection) {
         const rect = listenSection.getBoundingClientRect();
         
-        // Show dock when we scroll past the middle of listen section
+        // Show dock when the title "ÉCOUTER L'EP" is visible (top of section enters viewport)
         // Once visible, stay visible UNLESS we scroll back up to the very top (listen not reached yet)
-        const hasReachedListen = rect.top < window.innerHeight * 0.5;
+        const hasReachedListen = rect.top < window.innerHeight * 0.8; // Trigger plus tôt pour apparaître avec le titre
         
         if (hasReachedListen) {
           setIsVisible(true);
