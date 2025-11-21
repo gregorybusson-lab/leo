@@ -100,7 +100,7 @@ function ListenSection() {
         </p>
 
         {/* Spotify Embed - Artist Profile avec halo TRÈS large et lent */}
-        <div className="mb-12 max-w-3xl mx-auto relative">
+        <div id="spotify-player" className="mb-12 max-w-3xl mx-auto relative scroll-mt-24">
           {/* Halo externe MASSIF - pulse lent et hypnotique */}
           <div 
             className="absolute -inset-40 bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-emerald-500/15 
