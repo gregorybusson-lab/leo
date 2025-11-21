@@ -24,10 +24,9 @@ function App() {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          // MOBILE: scroll BEAUCOUP plus bas pour voir UNIQUEMENT le player (pas le titre)
-          // DESKTOP: scroll pour voir le titre + player
+          // MOBILE + DESKTOP: scroll pour voir UNIQUEMENT le player (PAS LE TITRE)
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition + (isMobile ? 150 : -100); // MOBILE: +150px (descend après le titre), DESKTOP: -100px
+          const offsetPosition = elementPosition + (isMobile ? 150 : 80); // Les deux descendent après le titre
           
           window.scrollTo({
             top: offsetPosition,
