@@ -19,9 +19,8 @@ function App() {
     const hash = window.location.hash;
     if (hash) {
       const isMobile = window.innerWidth < 768;
-      const delay = isMobile ? 0 : 800; // Pas de délai sur mobile, 800ms sur desktop
       
-      // Delay to let page render first, then smooth scroll
+      // Scroll directement sans délai sur desktop et mobile
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -34,7 +33,7 @@ function App() {
             behavior: 'smooth'
           });
         }
-      }, delay);
+      }, 100); // Petit délai technique pour que le DOM soit prêt
     }
     
     // Cleanup on unmount
