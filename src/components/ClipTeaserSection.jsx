@@ -11,7 +11,7 @@ function ClipTeaserSection() {
   const blocks = [
     {
       key: 'teaser',
-      title: 'Demain. 19h.',
+      title: 'DEMAIN, 19H',
       playerId: 'youtube-clip-teaser-player',
       eventLabel: 'youtube_teaser_demain_19h',
       src: TEASER_VIDEO_URL,
@@ -19,7 +19,7 @@ function ClipTeaserSection() {
     },
     {
       key: 'clip',
-      title: '2h30 : le clip',
+      title: '2H30 : LE CLIP, ENFIN',
       playerId: 'youtube-clip-release-player',
       eventLabel: 'youtube_clip_2h30',
       src: CLIP_VIDEO_URL,

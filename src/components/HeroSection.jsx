@@ -1,18 +1,4 @@
-import { useState, useEffect } from 'react';
-import { throttle } from '../utils/helpers';
-
 function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = throttle(() => {
-      setScrollY(window.scrollY);
-    }, 16); // ~60fps
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const scrollToTeaser = () => {
     // Track scroll arrow click
     if (window.gtag) {
@@ -92,15 +78,8 @@ function HeroSection() {
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Album cover with parallax & wow effect - optimisé pour mobile */}
-        <div 
-          className="mb-8 fade-in"
-          style={{
-            transform: `translate3d(0, ${scrollY * 0.3}px, 0)`,
-            willChange: 'transform',
-            opacity: scrollY > 400 ? Math.max(0, 1 - (scrollY - 400) * 0.003) : 1,
-          }}
-        >
+        {/* Album cover */}
+        <div className="mb-8 fade-in">
           <div className="relative inline-block">
             {/* Halo extra large - effet fumée blanche */}
             <div 
@@ -108,7 +87,7 @@ function HeroSection() {
                          rounded-[6rem] blur-[120px]"
               style={{
                 animation: 'slowGlow 8s ease-in-out infinite',
-                opacity: Math.max(0, 0.9 - scrollY * 0.0015),
+                opacity: 0.9,
               }}
             ></div>
             
@@ -118,7 +97,7 @@ function HeroSection() {
                          rounded-[4.5rem] blur-[100px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 1s',
-                opacity: Math.max(0, 1 - scrollY * 0.0015),
+                opacity: 1,
               }}
             ></div>
             
@@ -128,7 +107,7 @@ function HeroSection() {
                          rounded-[3.5rem] blur-[85px]"
               style={{
                 animation: 'slowGlow 7s ease-in-out infinite 2.3s',
-                opacity: Math.max(0, 1 - scrollY * 0.0015),
+                opacity: 1,
               }}
             ></div>
             
@@ -136,7 +115,7 @@ function HeroSection() {
             <div 
               className="absolute -inset-4 bg-white/40 blur-[40px] scale-110 animate-pulse"
               style={{
-                opacity: Math.max(0, 1 - scrollY * 0.0015),
+                opacity: 1,
                 transition: 'opacity 0.2s ease-out',
               }}
             ></div>
@@ -149,10 +128,6 @@ function HeroSection() {
                 className="w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover rounded-lg shadow-2xl 
                          transform transition-all duration-700 hover:scale-105 hover:rotate-2
                          border-4 border-white/10"
-                style={{
-                  transform: `scale(${Math.max(0.7, 1 - scrollY * 0.0004)})`,
-                  transition: 'transform 0.1s ease-out',
-                }}
               />
               
               {/* Shine effect on hover */}
@@ -163,13 +138,7 @@ function HeroSection() {
         </div>
 
         {/* Subtitle and CTA */}
-        <div 
-          className="fade-in-delay"
-          style={{
-            transform: `translateY(${scrollY * 0.15}px)`,
-            opacity: Math.max(0, 1 - scrollY * 0.002),
-          }}
-        >
+        <div className="fade-in-delay">
           <p className="text-xl md:text-2xl lg:text-3xl font-light mb-8 text-gray-100 tracking-wide">
             <span className="font-script text-2xl md:text-3xl lg:text-4xl">ORPHÉE</span> — Premier EP — <span className="font-bold text-emerald-400">Disponible maintenant !</span>
           </p>
