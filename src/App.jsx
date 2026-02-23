@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import HeroSection from './components/HeroSection'
+import ClipTeaserSection from './components/ClipTeaserSection'
 import AnnouncementSection from './components/AnnouncementSection'
 import TeaserSection from './components/TeaserSection'
 import ListenSection from './components/ListenSection'
@@ -43,11 +44,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
-      <AnnouncementSection />
+      <ClipTeaserSection />
       <HeroSection />
       <ListenSection />
       <BioSection />
       <TeaserSection />
+      <AnnouncementSection />
       <SocialSection />
       <Footer />
       <CookieConsent />

@@ -70,7 +70,7 @@ function HeroSection() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-start justify-center overflow-hidden pt-8 md:pt-14"
       style={{
         backgroundImage: 'url(/leo-background.png)',
         backgroundSize: 'cover',
