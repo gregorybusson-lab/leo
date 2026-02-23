@@ -4,7 +4,7 @@ import { loadYouTubeAPI } from '../utils/youtubeAPI';
 function ClipTeaserSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   // false = affiche "Demain. 19h." ; true = affiche "2h30 : le clip"
-  const SHOW_RELEASE_CLIP = false;
+  const SHOW_RELEASE_CLIP = true;
   const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1';
   const CLIP_VIDEO_URL = TEASER_VIDEO_URL;
 
