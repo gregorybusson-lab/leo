@@ -43,11 +43,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
+      <AnnouncementSection />
       <HeroSection />
       <ListenSection />
       <BioSection />
       <TeaserSection />
-      <AnnouncementSection />
       <SocialSection />
       <Footer />
       <CookieConsent />

@@ -3,11 +3,38 @@ import { loadYouTubeAPI } from '../utils/youtubeAPI';
 
 function AnnouncementSection() {
   const [isPlaying, setIsPlaying] = useState(false);
+  // false = affiche "Demain. 19h." ; true = affiche "2h30 : le clip"
+  const SHOW_RELEASE_CLIP = false;
+  const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1';
+  const CLIP_VIDEO_URL = TEASER_VIDEO_URL;
+
+  const blocks = [
+    {
+      key: 'teaser',
+      title: 'Demain. 19h.',
+      playerId: 'youtube-announcement-player-teaser',
+      eventLabel: 'youtube_teaser_demain_19h',
+      src: TEASER_VIDEO_URL,
+      isVisible: !SHOW_RELEASE_CLIP,
+    },
+    {
+      key: 'clip',
+      title: '2h30 : le clip',
+      playerId: 'youtube-announcement-player-clip',
+      eventLabel: 'youtube_clip_2h30',
+      src: CLIP_VIDEO_URL,
+      isVisible: SHOW_RELEASE_CLIP,
+    },
+  ];
+
+  const activeBlock = blocks.find((block) => block.isVisible) || blocks[0];
 
   useEffect(() => {
-    // Initialize player when API is ready
+    let player = null;
+
+    // Initialize active player when API is ready
     loadYouTubeAPI().then(() => {
-      new window.YT.Player('youtube-announcement-player', {
+      player = new window.YT.Player(activeBlock.playerId, {
         events: {
           'onStateChange': (event) => {
             if (event.data === window.YT.PlayerState.PLAYING) {
@@ -16,7 +43,7 @@ function AnnouncementSection() {
               if (window.gtag) {
                 window.gtag('event', 'video_play', {
                   'event_category': 'video',
-                  'event_label': 'youtube_announcement_21nov'
+                  'event_label': activeBlock.eventLabel
                 });
               }
             } else if (event.data === window.YT.PlayerState.PAUSED) {
@@ -25,7 +52,7 @@ function AnnouncementSection() {
               if (window.gtag) {
                 window.gtag('event', 'video_pause', {
                   'event_category': 'video',
-                  'event_label': 'youtube_announcement_21nov'
+                  'event_label': activeBlock.eventLabel
                 });
               }
             } else if (event.data === window.YT.PlayerState.ENDED) {
@@ -34,7 +61,7 @@ function AnnouncementSection() {
               if (window.gtag) {
                 window.gtag('event', 'video_ended', {
                   'event_category': 'video',
-                  'event_label': 'youtube_announcement_21nov'
+                  'event_label': activeBlock.eventLabel
                 });
               }
             }
@@ -42,61 +69,83 @@ function AnnouncementSection() {
         }
       });
     });
-  }, []);
+
+    return () => {
+      if (player && player.destroy) {
+        player.destroy();
+      }
+    };
+  }, [activeBlock.eventLabel, activeBlock.playerId]);
 
   return (
-    <section id="announcement-section" className="relative py-32 px-4 bg-black">
-      {/* Gradient de transition avec le Hero au-dessus */}
-      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/0 via-black/60 to-black"></div>
-      
+    <section id="announcement-section" className="py-32 px-4 bg-black">
       <div className="relative max-w-5xl mx-auto">
-        {/* Format standard 16:9 pour YouTube avec effet de halo réduit */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-4xl">
-            {/* Halo externe - Réduit */}
-            <div 
-              className={`absolute -inset-16 bg-gradient-to-r from-emerald-500/25 via-teal-500/25 to-emerald-500/25 
-                           rounded-3xl blur-[80px] transition-all duration-500`}
-              style={{
-                animation: isPlaying ? 'slowPulse 4s ease-in-out infinite' : 'slowPulse 6s ease-in-out infinite'
-              }}
-            ></div>
-            
-            {/* Halo moyen */}
-            <div 
-              className={`absolute -inset-10 bg-gradient-to-r from-emerald-500/35 via-teal-500/35 to-emerald-500/35 
-                           rounded-2xl blur-[50px] transition-all duration-400`}
-              style={{
-                animation: isPlaying ? 'slowPulse 5s ease-in-out infinite 0.5s' : 'slowPulse 7s ease-in-out infinite 0.5s'
-              }}
-            ></div>
-            
-            {/* Halo proche */}
-            <div 
-              className={`absolute -inset-6 bg-gradient-to-r from-emerald-400/40 via-teal-400/40 to-emerald-400/40 
-                           rounded-2xl blur-[30px] transition-all duration-300`}
-              style={{
-                animation: isPlaying ? 'slowPulse 6s ease-in-out infinite 1s' : 'slowPulse 8s ease-in-out infinite 1s'
-              }}
-            ></div>
-            
-            {/* Video player - Format 16:9 standard */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video w-full">
-              <iframe
-                id="youtube-announcement-player"
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1"
-                title="Annonce LÉO - 21 Novembre"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+        {blocks.map((block) => {
+          const blockIsPlaying = block.key === activeBlock.key && isPlaying;
+
+          return (
+            <div key={block.key} className={block.isVisible ? 'mb-8' : 'hidden'}>
+              <h2 className="font-script text-6xl md:text-7xl text-center mb-12">
+                {block.title}
+              </h2>
+
+              <div className="flex justify-center">
+                <div className="relative w-full max-w-4xl">
+                  {/* Glow effect autour de la vidéo - animation synchronisée à 138 BPM */}
+                  <div
+                    className={`absolute ${blockIsPlaying ? '-inset-16' : '-inset-4'} bg-gradient-to-r from-emerald-500/30 via-teal-500/30 to-emerald-500/30 
+                             rounded-2xl ${blockIsPlaying ? 'blur-3xl' : 'blur-2xl'} transition-all duration-300 ${blockIsPlaying ? '' : 'opacity-60 animate-pulse'}`}
+                    style={{
+                      animation: blockIsPlaying ? 'beat138Intense 435ms ease-in-out infinite' : undefined
+                    }}
+                  ></div>
+
+                  {/* Halo secondaire encore plus large quand ça joue */}
+                  {blockIsPlaying && (
+                    <div
+                      className="absolute -inset-24 bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-emerald-400/20 
+                             rounded-3xl blur-3xl"
+                      style={{
+                        animation: 'beat138Secondary 435ms ease-in-out infinite 217.5ms'
+                      }}
+                    ></div>
+                  )}
+
+                  {/* Bordure lumineuse animée - pulse synchronisé au BPM */}
+                  <div
+                    className={`absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-400 
+                             rounded-2xl blur-sm transition-all ${blockIsPlaying ? '' : 'opacity-50'}`}
+                    style={{
+                      animation: blockIsPlaying ? 'borderPulse138 435ms ease-in-out infinite' : undefined
+                    }}
+                  ></div>
+
+                  {/* Container de la vidéo */}
+                  <div className="relative group">
+                    <div
+                      className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video w-full
+                               transform transition-all duration-500 hover:scale-[1.01] hover:shadow-emerald-500/50
+                               border-2 border-emerald-500/30 hover:border-emerald-400/60"
+                    >
+                      <iframe
+                        id={block.playerId}
+                        className="w-full h-full"
+                        src={block.src}
+                        title={block.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+
+                    {/* Effet de reflet en dessous */}
+                    <div className="absolute -bottom-10 left-0 right-0 h-16 bg-gradient-to-b from-emerald-500/20 to-transparent blur-2xl"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            {/* Effet de reflet en dessous - Plus visible */}
-            <div className="absolute -bottom-12 left-0 right-0 h-24 bg-gradient-to-b from-emerald-500/20 to-transparent blur-2xl"></div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
