@@ -8,6 +8,9 @@ function Footer() {
         <p className="text-gray-500 text-xs mt-2">
           Site officiel — Design et production familiale
         </p>
+        <p className="text-amber-400 text-xs mt-3 tracking-wider uppercase">
+          Test Preview Vercel - 23 fevrier 2026
+        </p>
       </div>
     </footer>
   );
