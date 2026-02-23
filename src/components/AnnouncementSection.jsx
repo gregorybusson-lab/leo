@@ -91,12 +91,12 @@ function AnnouncementSection() {
 
               <div className="flex justify-center">
                 <div className="relative w-full max-w-4xl">
-                  {/* Glow effect autour de la vidéo - animation synchronisée à 138 BPM */}
+                  {/* Glow effect autour de la vidéo - animation synchronisée à 90 BPM */}
                   <div
                     className={`absolute ${blockIsPlaying ? '-inset-16' : '-inset-4'} bg-gradient-to-r from-emerald-500/30 via-teal-500/30 to-emerald-500/30 
                              rounded-2xl ${blockIsPlaying ? 'blur-3xl' : 'blur-2xl'} transition-all duration-300 ${blockIsPlaying ? '' : 'opacity-60 animate-pulse'}`}
                     style={{
-                      animation: blockIsPlaying ? 'beat138Intense 435ms ease-in-out infinite' : undefined
+                      animation: blockIsPlaying ? 'beat138Intense 666.67ms ease-in-out infinite' : undefined
                     }}
                   ></div>
 
@@ -106,7 +106,7 @@ function AnnouncementSection() {
                       className="absolute -inset-24 bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-emerald-400/20 
                              rounded-3xl blur-3xl"
                       style={{
-                        animation: 'beat138Secondary 435ms ease-in-out infinite 217.5ms'
+                        animation: 'beat138Secondary 666.67ms ease-in-out infinite 333.33ms'
                       }}
                     ></div>
                   )}
@@ -116,7 +116,7 @@ function AnnouncementSection() {
                     className={`absolute -inset-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-400 
                              rounded-2xl blur-sm transition-all ${blockIsPlaying ? '' : 'opacity-50'}`}
                     style={{
-                      animation: blockIsPlaying ? 'borderPulse138 435ms ease-in-out infinite' : undefined
+                      animation: blockIsPlaying ? 'borderPulse138 666.67ms ease-in-out infinite' : undefined
                     }}
                   ></div>
 

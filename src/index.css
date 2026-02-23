@@ -44,7 +44,7 @@
     }
   }
 
-  /* Animation synchronisée à 138 BPM (435ms par beat) - Halo lumineux INTENSE */
+  /* Animation synchronisée à 90 BPM (666.67ms par beat) - Halo lumineux INTENSE */
   @keyframes beat138Intense {
     0% {
       opacity: 0.4;
