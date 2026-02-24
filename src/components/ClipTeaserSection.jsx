@@ -5,8 +5,8 @@ function ClipTeaserSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   // false = affiche "Demain. 19h." ; true = affiche "2h30 : le clip"
   const SHOW_RELEASE_CLIP = false;
-  const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1';
-  const CLIP_VIDEO_URL = TEASER_VIDEO_URL;
+  const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/kB3iGtrBcgw?enablejsapi=1&rel=0&modestbranding=1';
+  const CLIP_VIDEO_URL = 'https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1';
 
   const blocks = [
     {
@@ -15,6 +15,7 @@ function ClipTeaserSection() {
       playerId: 'youtube-clip-teaser-player',
       eventLabel: 'youtube_teaser_demain_19h',
       src: TEASER_VIDEO_URL,
+      format: 'vertical',
       isVisible: !SHOW_RELEASE_CLIP,
     },
     {
@@ -23,6 +24,7 @@ function ClipTeaserSection() {
       playerId: 'youtube-clip-release-player',
       eventLabel: 'youtube_clip_2h30',
       src: CLIP_VIDEO_URL,
+      format: 'horizontal',
       isVisible: SHOW_RELEASE_CLIP,
     },
   ];
@@ -90,6 +92,7 @@ function ClipTeaserSection() {
       <div className="relative z-10 max-w-5xl mx-auto">
         {blocks.map((block) => {
           const blockIsPlaying = block.key === activeBlock.key && isPlaying;
+          const isVertical = block.format === 'vertical';
 
           return (
             <div key={block.key} className={block.isVisible ? 'mb-8' : 'hidden'}>
@@ -98,7 +101,7 @@ function ClipTeaserSection() {
               </h2>
 
               <div className="flex justify-center">
-                <div className="relative w-full max-w-4xl">
+                <div className={`relative w-full ${isVertical ? 'max-w-[430px]' : 'max-w-4xl'}`}>
                   <div
                     className={`absolute ${blockIsPlaying ? '-inset-16' : '-inset-4'} bg-gradient-to-r from-emerald-500/30 via-teal-500/30 to-emerald-500/30 
                              rounded-2xl ${blockIsPlaying ? 'blur-3xl' : 'blur-2xl'} transition-all duration-300 ${blockIsPlaying ? '' : 'opacity-60 animate-pulse'}`}
@@ -124,7 +127,7 @@ function ClipTeaserSection() {
                   ></div>
 
                   <div className="relative group">
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video w-full transform transition-all duration-500 hover:scale-[1.01] hover:shadow-emerald-500/50 border-2 border-emerald-500/30 hover:border-emerald-400/60">
+                    <div className={`relative rounded-2xl overflow-hidden shadow-2xl w-full transform transition-all duration-500 hover:scale-[1.01] hover:shadow-emerald-500/50 border-2 border-emerald-500/30 hover:border-emerald-400/60 ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
                       <iframe
                         id={block.playerId}
                         className="w-full h-full"
