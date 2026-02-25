@@ -4,14 +4,46 @@ import { loadYouTubeAPI } from '../utils/youtubeAPI';
 const RELEASE_AT_PARIS_ISO = '2026-02-26T19:00:00+01:00';
 const RELEASE_AT_MS = Date.parse(RELEASE_AT_PARIS_ISO);
 
+function getRevealOverrideFromUrl() {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const rawValue = new URLSearchParams(window.location.search).get('reveal');
+  if (!rawValue) {
+    return null;
+  }
+
+  const value = rawValue.toLowerCase();
+  if (value === '1' || value === 'true' || value === 'clip' || value === 'reveal') {
+    return true;
+  }
+  if (value === '0' || value === 'false' || value === 'teaser' || value === 'teasing') {
+    return false;
+  }
+
+  return null;
+}
+
 function ClipTeaserSection() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isReleaseLive, setIsReleaseLive] = useState(() => Date.now() >= RELEASE_AT_MS);
+  const revealOverride = getRevealOverrideFromUrl();
+  const [isReleaseLive, setIsReleaseLive] = useState(() => {
+    if (revealOverride !== null) {
+      return revealOverride;
+    }
+    return Date.now() >= RELEASE_AT_MS;
+  });
   const SHOW_RELEASE_CLIP = isReleaseLive;
   const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/kB3iGtrBcgw?enablejsapi=1&rel=0&modestbranding=1';
   const CLIP_VIDEO_URL = 'https://www.youtube.com/embed/ac56Toxrzsc?enablejsapi=1&rel=0&modestbranding=1';
 
   useEffect(() => {
+    if (revealOverride !== null) {
+      setIsReleaseLive(revealOverride);
+      return undefined;
+    }
+
     if (isReleaseLive) {
       return undefined;
     }
@@ -23,7 +55,7 @@ function ClipTeaserSection() {
     }, delay);
 
     return () => window.clearTimeout(timerId);
-  }, [isReleaseLive]);
+  }, [isReleaseLive, revealOverride]);
 
   const blocks = [
     {
