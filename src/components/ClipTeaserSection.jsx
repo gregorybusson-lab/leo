@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { loadYouTubeAPI } from '../utils/youtubeAPI';
 
-const RELEASE_AT_PARIS_ISO = '2026-02-26T19:00:00+01:00';
+const RELEASE_AT_PARIS_ISO = '2026-02-26T18:00:00+01:00';
 const RELEASE_AT_MS = Date.parse(RELEASE_AT_PARIS_ISO);
 
 function getRevealOverrideFromUrl() {
@@ -48,7 +48,7 @@ function ClipTeaserSection() {
       return undefined;
     }
 
-    // Bascule auto le 26/02/2026 à 19:00 heure de Paris (UTC+01:00).
+    // Bascule auto le 26/02/2026 à 18:00 heure de Paris (UTC+01:00).
     const delay = Math.max(0, RELEASE_AT_MS - Date.now());
     const timerId = window.setTimeout(() => {
       setIsReleaseLive(true);
