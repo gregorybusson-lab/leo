@@ -1,12 +1,29 @@
 import { useEffect, useState } from 'react';
 import { loadYouTubeAPI } from '../utils/youtubeAPI';
 
+const RELEASE_AT_PARIS_ISO = '2026-02-26T19:00:00+01:00';
+const RELEASE_AT_MS = Date.parse(RELEASE_AT_PARIS_ISO);
+
 function ClipTeaserSection() {
   const [isPlaying, setIsPlaying] = useState(false);
-  // false = affiche "Demain. 19h." ; true = affiche "2h30 : le clip"
-  const SHOW_RELEASE_CLIP = false;
+  const [isReleaseLive, setIsReleaseLive] = useState(() => Date.now() >= RELEASE_AT_MS);
+  const SHOW_RELEASE_CLIP = isReleaseLive;
   const TEASER_VIDEO_URL = 'https://www.youtube.com/embed/kB3iGtrBcgw?enablejsapi=1&rel=0&modestbranding=1';
-  const CLIP_VIDEO_URL = 'https://www.youtube.com/embed/fOdMXLK6VZw?enablejsapi=1&rel=0&modestbranding=1';
+  const CLIP_VIDEO_URL = 'https://www.youtube.com/embed/ac56Toxrzsc?enablejsapi=1&rel=0&modestbranding=1';
+
+  useEffect(() => {
+    if (isReleaseLive) {
+      return undefined;
+    }
+
+    // Bascule auto le 26/02/2026 à 19:00 heure de Paris (UTC+01:00).
+    const delay = Math.max(0, RELEASE_AT_MS - Date.now());
+    const timerId = window.setTimeout(() => {
+      setIsReleaseLive(true);
+    }, delay);
+
+    return () => window.clearTimeout(timerId);
+  }, [isReleaseLive]);
 
   const blocks = [
     {
