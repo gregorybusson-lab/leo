@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import AvantPremiereSection from './components/AvantPremiereSection'
 import ClipTeaserSection from './components/ClipTeaserSection'
 import AnnouncementSection from './components/AnnouncementSection'
 import TeaserSection from './components/TeaserSection'
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
+      <AvantPremiereSection />
       <ClipTeaserSection />
       <ListenSection />
       <BioSection />
