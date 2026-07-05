@@ -47,8 +47,8 @@ function App() {
       <AvantPremiereSection />
       <ClipTeaserSection />
       <ListenSection />
-      <BioSection />
       <TeaserSection />
+      <BioSection />
       <AnnouncementSection />
       <SocialSection />
       <Footer />
