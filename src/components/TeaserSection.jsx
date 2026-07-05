@@ -160,7 +160,7 @@ function TeaserSection() {
           Le premier single de l'EP, un moment de scène et un live à découvrir
         </p>
 
-        <div className="max-w-xl mx-auto space-y-14">
+        <div className="max-w-4xl mx-auto space-y-14">
           <div className="flex gap-4 md:gap-6 justify-center">
             {shorts.map(renderVideo)}
           </div>
