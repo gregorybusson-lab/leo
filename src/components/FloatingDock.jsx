@@ -27,11 +27,11 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = throttle(() => {
-      const listenSection = document.getElementById('listen-section');
+      const listenSection = document.getElementById('clip-teaser-section');
       if (listenSection) {
         const rect = listenSection.getBoundingClientRect();
-        
-        // Show dock when the title "ÉCOUTER L'EP" is visible (top of section enters viewport)
+
+        // Show dock when the title "2H30 : LE CLIP, ENFIN" is visible (top of section enters viewport)
         // Once visible, stay visible UNLESS we scroll back up to the very top (listen not reached yet)
         const hasReachedListen = rect.top < window.innerHeight * 0.8; // Trigger plus tôt pour apparaître avec le titre
         

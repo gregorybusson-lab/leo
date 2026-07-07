@@ -127,19 +127,9 @@ function ClipTeaserSection() {
   return (
     <section
       id="clip-teaser-section"
-      className="relative pt-24 pb-12 md:pt-28 md:pb-16 px-4 overflow-hidden"
-      style={{
-        backgroundImage: 'url(/leo-background.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      className="pt-24 pb-12 md:pt-28 md:pb-16 px-4 bg-black"
     >
-      <div className="absolute inset-0 backdrop-blur-sm"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/75 to-black"></div>
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
-
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {blocks.map((block) => {
           const blockIsPlaying = block.key === activeBlock.key && isPlaying;
           const isVertical = block.format === 'vertical';

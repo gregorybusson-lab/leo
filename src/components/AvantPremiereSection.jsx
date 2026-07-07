@@ -151,7 +151,9 @@ function AvantPremiereSection() {
       }}
     >
       <div className="absolute inset-0 backdrop-blur-sm"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/75 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/75 to-black"></div>
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
