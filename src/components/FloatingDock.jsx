@@ -27,23 +27,12 @@ function FloatingDock() {
 
   useEffect(() => {
     const handleScroll = throttle(() => {
-      const listenSection = document.getElementById('clip-teaser-section');
-      if (listenSection) {
-        const rect = listenSection.getBoundingClientRect();
+      // Visible dès qu'on quitte le tout haut de la page, caché en haut du navigateur
+      const hasScrolled = window.scrollY > 50;
 
-        // Show dock when the title "2H30 : LE CLIP, ENFIN" is visible (top of section enters viewport)
-        // Once visible, stay visible UNLESS we scroll back up to the very top (listen not reached yet)
-        const hasReachedListen = rect.top < window.innerHeight * 0.8; // Trigger plus tôt pour apparaître avec le titre
-        
-        if (hasReachedListen) {
-          setIsVisible(true);
-          if (!hasBeenVisible) {
-            setHasBeenVisible(true);
-          }
-        } else if (hasBeenVisible) {
-          // Only hide if we scrolled back up before the listen section
-          setIsVisible(false);
-        }
+      setIsVisible(hasScrolled);
+      if (hasScrolled && !hasBeenVisible) {
+        setHasBeenVisible(true);
       }
     }, 100); // Throttle à 100ms
 
