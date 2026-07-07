@@ -141,8 +141,19 @@ function AvantPremiereSection() {
   const [playingKey, setPlayingKey] = useState(null);
 
   return (
-    <section id="avant-premiere-section" className="py-24 px-4 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section
+      id="avant-premiere-section"
+      className="relative py-24 px-4 overflow-hidden"
+      style={{
+        backgroundImage: 'url(/leo-background.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/75 to-black"></div>
+
+      <div className="relative z-10 max-w-4xl mx-auto">
         <h2 className="font-script text-5xl md:text-6xl text-center mb-4">
           AVANT-PREMIÈRE
         </h2>

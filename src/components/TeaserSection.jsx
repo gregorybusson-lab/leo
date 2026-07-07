@@ -29,6 +29,15 @@ const VIDEOS = [
     caption: 'Concert du lycée, mai 2026',
     format: 'horizontal',
   },
+  {
+    key: 'annonce-orphee',
+    playerId: 'youtube-player-annonce-orphee',
+    eventLabel: 'youtube_announcement_21nov',
+    videoId: 'fOdMXLK6VZw',
+    title: 'ORPHÉE',
+    caption: "Bande-annonce de l'EP, disponible depuis le 21 novembre",
+    format: 'horizontal',
+  },
 ];
 
 function TeaserSection() {
@@ -148,7 +157,7 @@ function TeaserSection() {
   };
 
   const shorts = VIDEOS.filter((video) => video.format === 'vertical');
-  const standard = VIDEOS.find((video) => video.format === 'horizontal');
+  const standards = VIDEOS.filter((video) => video.format === 'horizontal');
 
   return (
     <section id="teaser-section" className="py-32 px-4 bg-black">
@@ -164,7 +173,7 @@ function TeaserSection() {
           <div className="flex gap-4 md:gap-6 justify-center">
             {shorts.map(renderVideo)}
           </div>
-          {standard && renderVideo(standard)}
+          {standards.map(renderVideo)}
         </div>
       </div>
     </section>
