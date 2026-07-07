@@ -125,10 +125,7 @@ function ClipTeaserSection() {
   }, [activeBlock.eventLabel, activeBlock.playerId]);
 
   return (
-    <section
-      id="clip-teaser-section"
-      className="pt-24 pb-12 md:pt-28 md:pb-16 px-4 bg-black"
-    >
+    <section id="clip-teaser-section" className="pt-24 pb-12 md:pt-28 md:pb-16 px-4">
       <div className="max-w-5xl mx-auto">
         {blocks.map((block) => {
           const blockIsPlaying = block.key === activeBlock.key && isPlaying;

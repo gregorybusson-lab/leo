@@ -43,8 +43,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
-      <AvantPremiereSection />
-      <ClipTeaserSection />
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(/leo-background.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/75 to-black"></div>
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
+
+        <div className="relative z-10">
+          <AvantPremiereSection />
+          <ClipTeaserSection />
+        </div>
+      </div>
       <ListenSection />
       <TeaserSection />
       <BioSection />
